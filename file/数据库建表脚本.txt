@@ -24,7 +24,7 @@ create table per_integration_basis
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_integration_basis comment '个人积分汇总表';
-ALTER TABLE per_integration_basis ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_integration_basis ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -99,7 +99,7 @@ create table per_integration_log
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_integration_log comment '个人积分日志表';
-ALTER TABLE per_integration_log ADD INDEX indexName(CREATION_DT)
+ALTER TABLE per_integration_log ADD INDEX indexName(CREATION_DT);
 
 
 
@@ -133,7 +133,7 @@ CREATE TABLE per_course_integration
 ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 ALTER TABLE per_course_integration COMMENT '个人课程积分汇总表';
-ALTER TABLE per_course_integration ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_course_integration ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -163,7 +163,7 @@ create table per_task_integration
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_task_integration comment '个人作业积分汇总表';
-ALTER TABLE per_task_integration ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_task_integration ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -193,7 +193,7 @@ create table per_question_integration
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_question_integration comment '个人提交问题积分汇总表';
-ALTER TABLE per_question_integration ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_question_integration ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -225,7 +225,7 @@ create table per_exchange_integration
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_exchange_integration comment '个人积分兑换信息表';
-ALTER TABLE per_exchange_integration ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_exchange_integration ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -255,7 +255,7 @@ create table per_training_integration
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_training_integration comment '培训班积分信息表';
-ALTER TABLE per_training_integration ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_training_integration ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -283,7 +283,7 @@ create table per_questionnaire_integration
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_questionnaire_integration comment '问卷信息积分汇总表';
-ALTER TABLE per_questionnaire_integration ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_questionnaire_integration ADD INDEX indexName(CREATION_TM);
 
 
 
@@ -314,7 +314,7 @@ create table per_dayend_runbatch
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table per_dayend_runbatch comment '个人日终跑批信息表';
-ALTER TABLE per_dayend_runbatch ADD INDEX indexName(CREATION_TM)
+ALTER TABLE per_dayend_runbatch ADD INDEX indexName(CREATION_TM);
 
 
 
