@@ -18,7 +18,7 @@ create table per_integration_basis
    REMARK3              varchar(200) default NULL comment '备用字段3',
    REMARK4              varchar(500) default NULL comment '备用字段4',
    REMARK5              varchar(500) default NULL comment '备用字段5',
-   primary key (ID)
+   primary key (ID),
    unique key AK_Key_2 (CREATION_TM)
 )
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
