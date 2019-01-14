@@ -354,3 +354,41 @@ create table effective_integral
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table effective_integral comment '积分有效期信息表';
+
+
+
+
+drop table if exists per_integration_user;
+
+/*==============================================================*/
+/* Table: per_integration_user                                  */
+/*==============================================================*/
+create table per_integration_user
+(
+   USER_ID              varchar(100) not null comment '用户id',
+   USERNAME             varchar(255) default NULL comment '用户名',
+   PASSWORD             varchar(255) default NULL comment '用户密码',
+   NAME                 varchar(255) default NULL comment '描述',
+   RIGHTS               varchar(255) default NULL,
+   ROLE_ID              varchar(100) default NULL,
+   LAST_LOGIN           varchar(255) default NULL comment '最后登录时间',
+   IP                   varchar(100) default NULL,
+   STATUS               varchar(32) default NULL comment '是否有效',
+   BZ                   varchar(255) default NULL,
+   PHONE                varchar(100) default NULL comment '电话号码',
+   SFID                 varchar(100) default NULL,
+   START_TIME           varchar(23) default NULL,
+   END_TIME             varchar(23) default NULL,
+   YEARS                int(10) default NULL,
+   NUMBER               varchar(100) default NULL comment '手机号码',
+   EMAIL                varchar(32) default NULL,
+   ORGID                varchar(32) default NULL,
+   TITILE               varchar(100) default NULL,
+   SEX                  varchar(2) default '2' comment '0男1女2未知',
+   BIRTHDAY             varchar(23) default NULL,
+   primary key (USER_ID)
+)
+ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+alter table per_integration_user comment '个人用户信息表';
+ALTER TABLE per_integration_user ADD INDEX indexName(LAST_LOGIN);

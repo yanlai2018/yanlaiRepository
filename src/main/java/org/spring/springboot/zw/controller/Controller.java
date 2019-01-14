@@ -44,7 +44,7 @@ public class Controller extends BaseController {
     //系统主页
     @RequestMapping(value = "/")
     public String index(ModelMap map) {
-        return "/login/index";
+        return "/login/login";
     }
 
     @RequestMapping(value = "/index")

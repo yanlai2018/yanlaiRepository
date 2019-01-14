@@ -275,6 +275,82 @@ public class AppController extends BaseController {
         return jsonReturn;
     }
 
+    /**
+     * 积分管理系统登录
+     * @param reqMap
+     * @return
+     * @author wangyanlai
+     * @version 2019年1月26日 上午8:43:05
+     */
+    @RequestMapping(value = "/loginIn", method = RequestMethod.POST)
+    public String loginIn(@RequestBody Map<String, Object> reqMap) {
+        ReturnData map = new ReturnData();
+        PageData pd = new PageData();
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+            map.setCode(Const.LOGINFAILURE_CODE);
+            String jsonReturn = JSON.toJSONString(map);
+            logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+
+        HttpServletRequest request = getRequest();
+        return userService.loginIn(reqMap, logger, request);
+    }
+    //新增用户基本信息信息
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    public String addUser(@RequestBody Map<String, Object> reqMap) {
+        ReturnData returndata = new ReturnData();
+        ReturnData map = new ReturnData();
+        returndata.setCode(Const.FAILURE_CODE);
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+            map.setCode(Const.LOGINFAILURE_CODE);
+            String jsonReturn = JSON.toJSONString(map);
+            logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        HttpServletRequest request = getRequest();
+        return userService.addUser(reqMap, logger, request);
+    }
+
+    //变更用户基本信息信息
+    @RequestMapping(value = "/updUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    public String updUser(@RequestBody Map<String, Object> reqMap) {
+        ReturnData map = new ReturnData();
+        ReturnData returndata = new ReturnData();
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+            map.setCode(Const.LOGINFAILURE_CODE);
+            String jsonReturn = JSON.toJSONString(map);
+            logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        HttpServletRequest request = getRequest();
+        return userService.updUser(reqMap, logger, request);
+    }
+
+    //删除用户基本信息信息
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    public String deleteUser(@RequestBody Map<String, Object> reqMap) {
+        ReturnData map = new ReturnData();
+        ReturnData returndata = new ReturnData();
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+            map.setCode(Const.LOGINFAILURE_CODE);
+            String jsonReturn = JSON.toJSONString(map);
+            logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        HttpServletRequest request = getRequest();
+        return userService.deleteUser(reqMap, logger, request);
+    }
+
+
     //新增积分配置信息
     @RequestMapping(value = "/addConfigure", method = RequestMethod.POST, produces="text/html; charset=utf-8")
     public String addConfigure(@RequestBody Map<String, Object> reqMap) {

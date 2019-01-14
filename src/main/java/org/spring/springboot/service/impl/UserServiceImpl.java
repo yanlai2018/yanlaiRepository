@@ -8,22 +8,37 @@
  */
 package org.spring.springboot.service.impl;
 
-import java.util.List;
+import java.util.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
 import org.spring.springboot.dao.APPDao;
 import org.spring.springboot.dao.DaoSupport;
-import org.spring.springboot.domain.PageData;
-import org.spring.springboot.domain.User;
+import org.spring.springboot.domain.*;
 import org.spring.springboot.service.UserService;
+import org.spring.springboot.zw.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+import static org.spring.springboot.zw.util.Const.PAGE;
+import static org.spring.springboot.zw.util.DESUtil.aesEncrypt;
+import static org.spring.springboot.zw.util.DESUtil.decryptBasedDes;
 
 /**
- * Title: UserServiceImpl  
- * Description: 
+ * Title: UserServiceImpl
+ * Description:
+ *
  * @author zhaowei
  * @version 2018年4月27日 下午6:25:34
  */
@@ -32,6 +47,8 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Resource(name = "daoSupport")
     private DaoSupport dao;
+    @Autowired
+    private DataSourceTransactionManager transactionManager;
 
     /*
      * 通过id获取数据
@@ -89,6 +106,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 修改页面--前端使用
+     *
      * @throws Exception
      * @返回值：void
      * @创建时间：2018年3月20日 下午1:22:09
@@ -100,5 +118,461 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    /**
+     * 登录积分管理系统验证
+     * 王燕来 2019.1。12
+     * Created by wangyanlai on 20180425.
+     *
+     * @author wangyanlai
+     * wangyanlai@cei.gov.cn
+     */
+    @Override
+    @Transactional()
+    public String loginIn(Map<String, Object> reqMap, Logger logger, HttpServletRequest request) {
+        ReturnData map = new ReturnData();
+        //初始化事务参数配置
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        //隔离级别为 PROPAGATION_NESTED--如果当前存在事务，则在嵌套事务内执行。
+        //如果当前没有事务，则进行与PROPAGATION_REQUIRED(新创事务)类似的操作。
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
+        TransactionStatus transStatus = transactionManager.getTransaction(def);
+        //初始化返回码为错误
+        map.setCode(Const.FAILURE_CODE);
+        //允许进行下面几种类型的积分信息查询
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        //初始化sql送值实体
+        Page page = new Page();
+        try {
+            map.setCode(Const.LOGINFAILURE_CODE);
+            PageData qureyData = new PageData();
+            String pageSizeStr = ((Object) reqMap.get("pageSize")).toString();
+            //添加分页信息
+            qureyData = getPage(qureyData, pageSizeStr, "1");
+            qureyData.put("userNm", userNm);
+            qureyData.put("passWd", passWd);
+            //添加分页信息进入储值域，用于传参
+            page.setPd(qureyData);
+            // 查询个人积分基本信息表
+            List<PageData> classTypeListBasis = (List<PageData>) dao.findForList("PerIntegrationUserMapper.selectByexamplePage", page);
+            if (classTypeListBasis != null && classTypeListBasis.size() != 0) {
+                map.setCode(Const.FAILURE_CODE);
+                PerIntegrationUser perIntegrationUser = new PerIntegrationUser();
+                HashMap tempmap = (HashMap) classTypeListBasis.get(0);
+                perIntegrationUser.setUserId(tempmap.get("USER_ID") == null ? "" : (String) tempmap.get("USER_ID"));
+                perIntegrationUser.setIp(getIpAddress(request));
+                perIntegrationUser.setLastLogin(DateUtil.getTime());
+                Object updNum = null;
+                try {
+                    updNum = dao.update("PerIntegrationUserMapper.updateByPrimaryKey", perIntegrationUser);
+                    if (null == updNum || "0" == updNum.toString()) {
+                        //json格式没有被打乱不需要格式化
+                        logger.info("更新用户基本信息表失败");
+                        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                        logger.info("queryScore---jsonObject.toString()---" + jsonReturn + "---");
+                        return jsonReturn;
+                    }
+                } catch (Exception e) {
+                    logger.info("更新用户基本信息表失败");
+                    //事务回滚
+                    logger.info("=====================事务回滚======================");
+                    transactionManager.rollback(transStatus);
+                    //json格式没有被打乱不需要格式化
+                    String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                    logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+                    return jsonReturn;
+                }
+                // 输出返回结果(不走最终的统一输出结果的原因是，这里的返回报文需要重新拼接一下，把总页数拼接到前边方便用户的使用)
+                String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                //拼接总页数便于用户使用
+                jsonReturn = jsonReturn.replaceAll("contentlist", "rows");
+                logger.info("插入操作日志");
+                insertSysOperatelog(DESUtil.aesDecrypt(userNm.toString(), Const.ALLENCRYPTCODE), "login", logger, request);
+                map.setCode(Const.SUCCESS_CODE);
+
+            }
+        } catch (Exception e) {
+            logger.info("验证登录信息失败");
+            //事务回滚
+            logger.info("=====================事务回滚======================");
+            transactionManager.rollback(transStatus);
+            //json格式没有被打乱不需要格式化
+            String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+            logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        // 统一输出返回结果
+        HashMap totalMap = new HashMap();
+        if (!Const.SUCCESS_CODE.equals(map.getCode())) {
+            totalMap.put("total", "0");
+        }
+        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+        String totalMapJson = JSON.toJSONString(totalMap).replaceAll("\\{", "").replaceAll("}", ",");
+        jsonReturn = jsonReturn.replaceAll("\"code", totalMapJson + "\"code");
+        logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+        return jsonReturn;
+    }
+
+    /**
+     * 新增积分管理系统用户信息
+     * 王燕来 2019.1。12
+     * Created by wangyanlai on 20180425.
+     *
+     * @author wangyanlai
+     * wangyanlai@cei.gov.cn
+     */
+    @Override
+    @Transactional()
+    public String addUser(Map<String, Object> reqMap, Logger logger, HttpServletRequest request) {
+        ReturnData map = new ReturnData();
+        //初始化事务参数配置
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        //隔离级别为 PROPAGATION_NESTED--如果当前存在事务，则在嵌套事务内执行。
+        //如果当前没有事务，则进行与PROPAGATION_REQUIRED(新创事务)类似的操作。
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
+        TransactionStatus transStatus = transactionManager.getTransaction(def);
+        //初始化返回码为错误
+        map.setCode(Const.FAILURE_CODE);
+        //允许进行下面几种类型的积分信息查询
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        //初始化sql送值实体
+        Page page = new Page();
+        try {
+            map.setCode(Const.LOGINFAILURE_CODE);
+            PageData qureyData = new PageData();
+            String pageSizeStr = ((Object) reqMap.get("pageSize")).toString();
+            //添加分页信息
+            qureyData = getPage(qureyData, pageSizeStr, "1");
+            qureyData.put("userNm", userNm);
+            qureyData.put("passWd", passWd);
+            //添加分页信息进入储值域，用于传参
+            page.setPd(qureyData);
+            // 查询个人积分基本信息表
+            List<PageData> classTypeListBasis = (List<PageData>) dao.findForList("PerIntegrationUserMapper.selectByexamplePage", page);
+            if (classTypeListBasis != null && classTypeListBasis.size() != 0) {
+                map.setCode(Const.FAILURE_CODE);
+                PerIntegrationUser perIntegrationUser = new PerIntegrationUser();
+                HashMap tempmap = (HashMap) classTypeListBasis.get(0);
+                perIntegrationUser.setUserId(tempmap.get("USER_ID") == null ? "" : (String) tempmap.get("USER_ID"));
+                perIntegrationUser.setIp(getIpAddress(request));
+                perIntegrationUser.setLastLogin(DateUtil.getTime());
+                Object updNum = null;
+                try {
+                    updNum = dao.update("PerIntegrationUserMapper.updateByPrimaryKey", perIntegrationUser);
+                    if (null == updNum || "0" == updNum.toString()) {
+                        //json格式没有被打乱不需要格式化
+                        logger.info("更新用户基本信息表失败");
+                        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                        logger.info("queryScore---jsonObject.toString()---" + jsonReturn + "---");
+                        return jsonReturn;
+                    }
+                } catch (Exception e) {
+                    logger.info("更新用户基本信息表失败");
+                    //事务回滚
+                    logger.info("=====================事务回滚======================");
+                    transactionManager.rollback(transStatus);
+                    //json格式没有被打乱不需要格式化
+                    String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                    logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+                    return jsonReturn;
+                }
+                // 输出返回结果(不走最终的统一输出结果的原因是，这里的返回报文需要重新拼接一下，把总页数拼接到前边方便用户的使用)
+                String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                //拼接总页数便于用户使用
+                jsonReturn = jsonReturn.replaceAll("contentlist", "rows");
+                logger.info("插入操作日志");
+                insertSysOperatelog(DESUtil.aesDecrypt(userNm.toString(), Const.ALLENCRYPTCODE), "login", logger, request);
+                map.setCode(Const.SUCCESS_CODE);
+
+            }
+        } catch (Exception e) {
+            logger.info("验证登录信息失败");
+            //事务回滚
+            logger.info("=====================事务回滚======================");
+            transactionManager.rollback(transStatus);
+            //json格式没有被打乱不需要格式化
+            String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+            logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        // 统一输出返回结果
+        HashMap totalMap = new HashMap();
+        if (!Const.SUCCESS_CODE.equals(map.getCode())) {
+            totalMap.put("total", "0");
+        }
+        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+        String totalMapJson = JSON.toJSONString(totalMap).replaceAll("\\{", "").replaceAll("}", ",");
+        jsonReturn = jsonReturn.replaceAll("\"code", totalMapJson + "\"code");
+        logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+        return jsonReturn;
+    }
+
+    /**
+     * 修改积分管理系统用户信息
+     * 王燕来 2019.1。12
+     * Created by wangyanlai on 20180425.
+     *
+     * @author wangyanlai
+     * wangyanlai@cei.gov.cn
+     */
+    @Override
+    @Transactional()
+    public String updUser(Map<String, Object> reqMap, Logger logger, HttpServletRequest request) {
+        ReturnData map = new ReturnData();
+        //初始化事务参数配置
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        //隔离级别为 PROPAGATION_NESTED--如果当前存在事务，则在嵌套事务内执行。
+        //如果当前没有事务，则进行与PROPAGATION_REQUIRED(新创事务)类似的操作。
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
+        TransactionStatus transStatus = transactionManager.getTransaction(def);
+        //初始化返回码为错误
+        map.setCode(Const.FAILURE_CODE);
+        //允许进行下面几种类型的积分信息查询
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        //初始化sql送值实体
+        Page page = new Page();
+        try {
+            map.setCode(Const.LOGINFAILURE_CODE);
+            PageData qureyData = new PageData();
+            String pageSizeStr = ((Object) reqMap.get("pageSize")).toString();
+            //添加分页信息
+            qureyData = getPage(qureyData, pageSizeStr, "1");
+            qureyData.put("userNm", userNm);
+            qureyData.put("passWd", passWd);
+            //添加分页信息进入储值域，用于传参
+            page.setPd(qureyData);
+            // 查询个人积分基本信息表
+            List<PageData> classTypeListBasis = (List<PageData>) dao.findForList("PerIntegrationUserMapper.selectByexamplePage", page);
+            if (classTypeListBasis != null && classTypeListBasis.size() != 0) {
+                map.setCode(Const.FAILURE_CODE);
+                PerIntegrationUser perIntegrationUser = new PerIntegrationUser();
+                HashMap tempmap = (HashMap) classTypeListBasis.get(0);
+                perIntegrationUser.setUserId(tempmap.get("USER_ID") == null ? "" : (String) tempmap.get("USER_ID"));
+                perIntegrationUser.setIp(getIpAddress(request));
+                perIntegrationUser.setLastLogin(DateUtil.getTime());
+                Object updNum = null;
+                try {
+                    updNum = dao.update("PerIntegrationUserMapper.updateByPrimaryKey", perIntegrationUser);
+                    if (null == updNum || "0" == updNum.toString()) {
+                        //json格式没有被打乱不需要格式化
+                        logger.info("更新用户基本信息表失败");
+                        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                        logger.info("queryScore---jsonObject.toString()---" + jsonReturn + "---");
+                        return jsonReturn;
+                    }
+                } catch (Exception e) {
+                    logger.info("更新用户基本信息表失败");
+                    //事务回滚
+                    logger.info("=====================事务回滚======================");
+                    transactionManager.rollback(transStatus);
+                    //json格式没有被打乱不需要格式化
+                    String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                    logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+                    return jsonReturn;
+                }
+                // 输出返回结果(不走最终的统一输出结果的原因是，这里的返回报文需要重新拼接一下，把总页数拼接到前边方便用户的使用)
+                String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                //拼接总页数便于用户使用
+                jsonReturn = jsonReturn.replaceAll("contentlist", "rows");
+                logger.info("插入操作日志");
+                insertSysOperatelog(DESUtil.aesDecrypt(userNm.toString(), Const.ALLENCRYPTCODE), "login", logger, request);
+                map.setCode(Const.SUCCESS_CODE);
+
+            }
+        } catch (Exception e) {
+            logger.info("验证登录信息失败");
+            //事务回滚
+            logger.info("=====================事务回滚======================");
+            transactionManager.rollback(transStatus);
+            //json格式没有被打乱不需要格式化
+            String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+            logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        // 统一输出返回结果
+        HashMap totalMap = new HashMap();
+        if (!Const.SUCCESS_CODE.equals(map.getCode())) {
+            totalMap.put("total", "0");
+        }
+        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+        String totalMapJson = JSON.toJSONString(totalMap).replaceAll("\\{", "").replaceAll("}", ",");
+        jsonReturn = jsonReturn.replaceAll("\"code", totalMapJson + "\"code");
+        logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+        return jsonReturn;
+    }
+
+    /**
+     * 删除积分管理系统用户信息
+     * 王燕来 2019.1。12
+     * Created by wangyanlai on 20180425.
+     *
+     * @author wangyanlai
+     * wangyanlai@cei.gov.cn
+     */
+    @Override
+    @Transactional()
+    public String deleteUser(Map<String, Object> reqMap, Logger logger, HttpServletRequest request) {
+        ReturnData map = new ReturnData();
+        //初始化事务参数配置
+        DefaultTransactionDefinition def = new DefaultTransactionDefinition();
+        //隔离级别为 PROPAGATION_NESTED--如果当前存在事务，则在嵌套事务内执行。
+        //如果当前没有事务，则进行与PROPAGATION_REQUIRED(新创事务)类似的操作。
+        def.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);
+        TransactionStatus transStatus = transactionManager.getTransaction(def);
+        //初始化返回码为错误
+        map.setCode(Const.FAILURE_CODE);
+        //允许进行下面几种类型的积分信息查询
+        Object passWd = reqMap.get("password");
+        Object userNm = reqMap.get("username");
+        //初始化sql送值实体
+        Page page = new Page();
+        try {
+            map.setCode(Const.LOGINFAILURE_CODE);
+            PageData qureyData = new PageData();
+            String pageSizeStr = ((Object) reqMap.get("pageSize")).toString();
+            //添加分页信息
+            qureyData = getPage(qureyData, pageSizeStr, "1");
+            qureyData.put("userNm", userNm);
+            qureyData.put("passWd", passWd);
+            //添加分页信息进入储值域，用于传参
+            page.setPd(qureyData);
+            // 查询个人积分基本信息表
+            List<PageData> classTypeListBasis = (List<PageData>) dao.findForList("PerIntegrationUserMapper.selectByexamplePage", page);
+            if (classTypeListBasis != null && classTypeListBasis.size() != 0) {
+                map.setCode(Const.FAILURE_CODE);
+                PerIntegrationUser perIntegrationUser = new PerIntegrationUser();
+                HashMap tempmap = (HashMap) classTypeListBasis.get(0);
+                perIntegrationUser.setUserId(tempmap.get("USER_ID") == null ? "" : (String) tempmap.get("USER_ID"));
+                perIntegrationUser.setIp(getIpAddress(request));
+                perIntegrationUser.setLastLogin(DateUtil.getTime());
+                Object updNum = null;
+                try {
+                    updNum = dao.update("PerIntegrationUserMapper.updateByPrimaryKey", perIntegrationUser);
+                    if (null == updNum || "0" == updNum.toString()) {
+                        //json格式没有被打乱不需要格式化
+                        logger.info("更新用户基本信息表失败");
+                        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                        logger.info("queryScore---jsonObject.toString()---" + jsonReturn + "---");
+                        return jsonReturn;
+                    }
+                } catch (Exception e) {
+                    logger.info("更新用户基本信息表失败");
+                    //事务回滚
+                    logger.info("=====================事务回滚======================");
+                    transactionManager.rollback(transStatus);
+                    //json格式没有被打乱不需要格式化
+                    String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                    logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+                    return jsonReturn;
+                }
+                // 输出返回结果(不走最终的统一输出结果的原因是，这里的返回报文需要重新拼接一下，把总页数拼接到前边方便用户的使用)
+                String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                //拼接总页数便于用户使用
+                jsonReturn = jsonReturn.replaceAll("contentlist", "rows");
+                logger.info("插入操作日志");
+                insertSysOperatelog(DESUtil.aesDecrypt(userNm.toString(), Const.ALLENCRYPTCODE), "login", logger, request);
+                map.setCode(Const.SUCCESS_CODE);
+
+            }
+        } catch (Exception e) {
+            logger.info("验证登录信息失败");
+            //事务回滚
+            logger.info("=====================事务回滚======================");
+            transactionManager.rollback(transStatus);
+            //json格式没有被打乱不需要格式化
+            String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+            logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+            return jsonReturn;
+        }
+        // 统一输出返回结果
+        HashMap totalMap = new HashMap();
+        if (!Const.SUCCESS_CODE.equals(map.getCode())) {
+            totalMap.put("total", "0");
+        }
+        String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+        String totalMapJson = JSON.toJSONString(totalMap).replaceAll("\\{", "").replaceAll("}", ",");
+        jsonReturn = jsonReturn.replaceAll("\"code", totalMapJson + "\"code");
+        logger.info("loginIn---jsonObject.toString()---" + jsonReturn + "---");
+        return jsonReturn;
+    }
+
+    /**
+     * 返回类型PageData data, 出入得每页条数String pageSize, 传入的当前页数String pageNum 添加分页信息公共方法
+     * 王燕来 2018.12。21
+     * Created by wangyanlai on 20180425.
+     *
+     * @author wangyanlai
+     * wangyanlai@cei.gov.cn
+     */
+
+    public PageData getPage(PageData data, String pageSize, String pageNum) {
+        if (StringUtils.isBlank(pageSize) || pageSize.length() >= 10) {
+            pageSize = PAGE;
+        }
+        if (StringUtils.isBlank(pageNum) || "0".equals(pageNum) || pageNum.length() >= 10) {
+            pageNum = "1";
+        }
+        Integer limitbegin = (Integer.valueOf(pageNum) - 1) * Integer.valueOf(pageSize);
+        Integer limitend = Integer.valueOf(pageSize);
+        data.put("limitbegin", limitbegin);
+        data.put("limitend", limitend);
+        return data;
+    }
+
+    /**
+     * Title: 用户操作日志新增:
+     *
+     * @author wangyanlai
+     * @version 2019年1月3日 下午4:29:44
+     * wangyanlai@cei.gov.cn
+     */
+    public void insertSysOperatelog(String userId, String type, Logger logger, HttpServletRequest request) throws
+            Exception {
+        SysOperatelog sysOperatelog = new SysOperatelog();
+        sysOperatelog.setCreatetime(DateUtil.getTime());
+        sysOperatelog.setIp(getIpAddress(request));
+        sysOperatelog.setLogid(UuidUtil.get32UUID());
+        sysOperatelog.setLogname("用户通过id:" + getIpAddress(request) + "进行系统登录");
+
+        sysOperatelog.setLogtype("0");
+        sysOperatelog.setOperatetype("QUERY");
+        sysOperatelog.setModuletype("INTEGRATION");
+        sysOperatelog.setOperater(userId);
+        sysOperatelog.setLoggertype("OPERATE");
+        Object updOperaLogNum = null;
+        try {
+            updOperaLogNum = dao.update("SysOperatelogMapper.insert", sysOperatelog);
+        } catch (Exception e) {
+            logger.info("插入操作日志表失败");
+        }
+        if (updOperaLogNum == null) {
+            logger.info("插入操作日志表失败");
+        }
+    }
+
+    /**
+     * Title: 获取登录ip:
+     *
+     * @author wangyanlai
+     * @version 2018年12月26日 下午4:29:44
+     */
+
+    public String getIpAddress(HttpServletRequest request) {
+        String ip = request.getHeader("x-forwarded-for");
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+            ip = request.getRemoteAddr();
+        }
+        return ip;
     }
 }
