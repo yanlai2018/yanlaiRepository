@@ -9,9 +9,13 @@
 package org.spring.springboot.service;
 
 import java.util.List;
+import java.util.Map;
 
+import org.slf4j.Logger;
 import org.spring.springboot.domain.PageData;
 import org.spring.springboot.domain.User;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Title: UserService  
@@ -43,4 +47,36 @@ public interface UserService{
 	 * @创建时间：2018年3月20日 下午1:22:09
 	 */
 	public void editUserPro(PageData pd);
+
+	/**
+	 * 登录积分系统后台管理系统
+	 * @throws Exception
+	 * @返回值：void
+	 * @创建时间：2019年3月20日 下午1:22:09
+	 */
+	String loginIn(Map<String, Object> reqMap, Logger logger, HttpServletRequest request);
+
+	/**
+	 * 修改积分系统后台管理系统用户信息
+	 * @throws Exception
+	 * @返回值：void
+	 * @创建时间：2019年1月20日 下午1:22:09
+	 */
+	String updUser(Map<String, Object> reqMap, Logger logger, HttpServletRequest request);
+
+	/**
+	 * 增加积分系统后台管理系统用户信息
+	 * @throws Exception
+	 * @返回值：void
+	 * @创建时间：2019年3月20日 下午1:22:09
+	 */
+	String addUser(Map<String, Object> reqMap, Logger logger, HttpServletRequest request);
+
+	/**
+	 * 删除积分系统后台管理系统用户信息
+	 * @throws Exception
+	 * @返回值：void
+	 * @创建时间：2019年3月20日 下午1:22:09
+	 */
+	String deleteUser(Map<String, Object> reqMap, Logger logger, HttpServletRequest request);
 }

@@ -261,7 +261,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         map.setCode(Const.FAILURE_CODE);
         try {
             updNum = dao.update("PerIntegrationConfigureMapper.deleteByPrimaryKey", perIntegrationConfigure);
-            if (null == updNum||0 == updNum){
+            if (null == updNum||"0" == updNum.toString()){
                 //json格式没有被打乱不需要格式化
                 logger.info("删除积分配置信息表失败");
                 String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
