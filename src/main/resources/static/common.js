@@ -23,3 +23,10 @@ function isNumber(value) {
         return true
     }
 }
+document.write("<script type='text/javascript' src='../../rewardpoints/static/login/login-register.js'></script>");
+// $(function(){
+//     $(".firstNav").find("a").click(function(e){
+//         $(".firstNav a").removeClass("on");
+//         $(this).addClass("on");
+//     });
+// })

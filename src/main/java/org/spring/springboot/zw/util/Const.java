@@ -33,6 +33,7 @@ public class Const {
     public static final String NOTJOINED = "1013"; // 未加入
     public static final String SAMECODE = "1014"; // 旧值新值一致
     public static final String NONEEDUPDATE = "1015"; //APP無需更新
+    public static final String LOGIN_TIME_OUT = "9999"; //登陆超时
     //积分相关信息码
     public static final String ALREADY_OBTAINED_SCORE = "1201"; // 表示本次变更无效，已经存在有效记录
     public static final String IRREGULAR_PARAMETERS = "1202"; // 表示传送参数不合规范

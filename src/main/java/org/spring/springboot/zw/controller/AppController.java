@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
@@ -298,6 +299,21 @@ public class AppController extends BaseController {
         HttpServletRequest request = getRequest();
         return userService.loginIn(reqMap, logger, request);
     }
+    /**
+     * 积分管理系统登录
+     * @param reqMap
+     * @return
+     * @author wangyanlai
+     * @version 2019年1月26日 上午8:43:05
+     */
+    @RequestMapping(value = "/loginOut", method = RequestMethod.POST)
+    public String loginOut(@RequestBody Map<String, Object> reqMap) {
+        ReturnData map = new ReturnData();
+        PageData pd = new PageData();
+        HttpServletRequest request = getRequest();
+        return userService.loginOut(reqMap, logger, request);
+    }
+
     //新增用户基本信息信息
     @RequestMapping(value = "/addUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
     public String addUser(@RequestBody Map<String, Object> reqMap) {
@@ -321,15 +337,15 @@ public class AppController extends BaseController {
     public String updUser(@RequestBody Map<String, Object> reqMap) {
         ReturnData map = new ReturnData();
         ReturnData returndata = new ReturnData();
+        HttpServletRequest request = getRequest();
         Object passWd = reqMap.get("password");
-        Object userNm = reqMap.get("username");
-        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+        Object newpassWd = reqMap.get("newpassword");
+        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(newpassWd)){
             map.setCode(Const.LOGINFAILURE_CODE);
             String jsonReturn = JSON.toJSONString(map);
             logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
             return jsonReturn;
         }
-        HttpServletRequest request = getRequest();
         return userService.updUser(reqMap, logger, request);
     }
 
@@ -422,6 +438,11 @@ public class AppController extends BaseController {
     @RequestMapping(value = "/queryScore", method = RequestMethod.POST, produces="text/html; charset=utf-8")
     public String queryScore(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
+        HttpServletRequest request = getRequest();
+        if(!sessionValidate()){
+            returndata.setCode(Const.LOGIN_TIME_OUT);
+            return JSON.toJSONString(returndata);
+        }
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
         if(org.springframework.util.StringUtils.isEmpty((reqMap.get(qryType)))){
             return JSON.toJSONString(returndata);
@@ -436,7 +457,6 @@ public class AppController extends BaseController {
         }catch (Exception e){
             return JSON.toJSONString(returndata);
         }
-        HttpServletRequest request = getRequest();
         return integrationQryService.qryIntegration(reqMap, logger, request);
     }
 
@@ -459,13 +479,29 @@ public class AppController extends BaseController {
      */
     @RequestMapping(value = "/updScore", method = RequestMethod.POST)
     public String updScore(@RequestBody Map<String, Object> reqMap) {
+        HttpServletRequest request = getRequest();
         ReturnData returndata = new ReturnData();
+        if(!sessionValidate()){
+            returndata.setCode(Const.LOGIN_TIME_OUT);
+            return JSON.toJSONString(returndata);
+        }
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
         if (StringUtils.isBlank(((Object) reqMap.get(userId)).toString()) || StringUtils.isBlank(((Object) reqMap.get(updType)).toString())) {
             return JSON.toJSONString(returndata);
         }
-        HttpServletRequest request = getRequest();
         return integrationUpdService.updIntegration(reqMap, logger, request);
+    }
+
+    /*检验session是否超时*/
+    public boolean sessionValidate() {
+        HttpServletRequest request = getRequest();
+        String userId = (String) request.getSession().getAttribute("sessionUserId");
+        logger.info("sessionUserId=="+userId);
+        if (null == userId || "".equals(userId)) {
+            logger.info("session超时退出");
+            return false;
+        }
+        return true;
     }
 
 }

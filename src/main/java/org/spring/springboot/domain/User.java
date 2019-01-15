@@ -9,13 +9,24 @@
 package org.spring.springboot.domain;
 
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 /**
  * Title: User  
  * Description: 
  * @author zhaowei 
  * @version 2018年4月27日 下午5:46:14
  */
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Component
 public class User {
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+	private static final long serialVersionUID = 9120765714832970813L;
     private String USER_ID;		//用户id
 	private String USERNAME;	//用户名
 	private String PASSWORD; 	//密码

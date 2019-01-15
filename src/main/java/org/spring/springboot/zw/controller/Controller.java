@@ -21,6 +21,7 @@ import org.spring.springboot.zw.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,65 +45,122 @@ public class Controller extends BaseController {
     //系统主页
     @RequestMapping(value = "/")
     public String index(ModelMap map) {
-        return "/login/login";
+        if(!sessionValidate()){
+            return "/login/login";
+        }
+        return "/login/index";
     }
 
     @RequestMapping(value = "/index")
     public String welcome(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/index";
     }
-    //系统菜单
+
+    //系统页眉
     @RequestMapping(value = "/menu")
     public String menu(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/menu";
+    }
+
+
+    //修改密码页面
+    @RequestMapping(value = "/updpass")
+    public String eyebrow(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
+        return "/login/updpass";
     }
 
     //积分汇总列表
     @RequestMapping(value = "/integrationBasis")
     public String configureBasis(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_basis";
     }
 
     //积分课程列表
     @RequestMapping(value = "/integrationCourse")
     public String integrationCourse(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_course";
     }
 
     //积分培训列表
     @RequestMapping(value = "/integrationTraining")
     public String integrationTraining(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_training";
     }
 
     //积分积分兑换列表
     @RequestMapping(value = "/integrationExchange")
     public String integrationExchange(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_exchange";
     }
 
     //积分作业列表
     @RequestMapping(value = "/integrationTask")
     public String integrationTask(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_task";
     }
 
     //积分跑批列表
     @RequestMapping(value = "/integrationDayend")
     public String integrationDayend(ModelMap map) {
+
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_dayend";
     }
 
     //提交问卷调查积分列表
     @RequestMapping(value = "/integrationQuestionnaire")
     public String integrationQuestionnaire(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_questionnaire";
     }
 
     //提交问题积分列表
     @RequestMapping(value = "/integrationQuestion")
     public String integrationQuestion(ModelMap map) {
+        if(!sessionValidate()){
+            return "/login/login";
+        }
         return "/login/integral_question";
     }
 
+
+    /*检验session是否超时*/
+    public boolean sessionValidate() {
+        HttpServletRequest request = getRequest();
+        String userId = (String) request.getSession().getAttribute("sessionUserId");
+        logger.info("sessionUserId=="+userId);
+        if (null == userId || "".equals(userId)) {
+            logger.info("session超时退出");
+            return false;
+        }
+        return true;
+    }
 }

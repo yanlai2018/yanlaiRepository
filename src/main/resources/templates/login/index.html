@@ -88,12 +88,14 @@
     <script type="text/javascript" src="../../rewardpoints/static/extensions/export/jquery.base64.js"></script>
     <script type="text/javascript" src="../../rewardpoints/static/extensions/export/bootstrap-table-export.js"></script>
     <script type="text/javascript" src="../../rewardpoints/static/extensions/export/tableExport.js"></script>
+    <link href="../../rewardpoints/static/login/login-register.css" rel="stylesheet" />
+    <script src="../../rewardpoints/static/login/login-register.js" type="text/javascript"></script>
 </head>
 
 <body>
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <span id="uu" hidden="hidden">${sessionScope.user.userName}</span>
+    <span id="uu" hidden="hidden">${sessionScope.sessionUserId}</span>
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -104,6 +106,12 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/rewardpoints/" style="font-size: 32px;line-height: 25px;">学习平台-积分管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a  onclick="loginUpdAjax()">修改密码</a></li>
+                <li><a  onclick="loginOutAjax()">退出登录</a></li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -178,7 +186,6 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal-dialog -->
-
 <div class="modal fade" id="myConfigModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -230,6 +237,31 @@
         </div>
     </div>
 </div>
+<div id="updPassWdDiv">
+
+</div>
+<!--<div class="modal fade" id="updPasswordDiv" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+    <!--<div class="modal-dialog" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-body">-->
+                <!--<form id="updPassWdForm">-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="remark1" class="control-label">原密码:</label>-->
+                        <!--<input class="form-control"  type="password" id="updPassword" placeholder="请输入原密码" onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')" maxlength="20"></input>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                        <!--<label for="remark1" class="control-label">新密码:</label>-->
+                        <!--<input class="form-control"  type="password"  id="updNewpassword" placeholder="请输入新密码" onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')" maxlength="20"></input>-->
+                    <!--</div>-->
+                <!--</form>-->
+            <!--</div>-->
+            <!--<div class="modal-footer form loginBox">-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+                <!--<button type="button" class="btn btn-primary" onclick="confirmSave()">保存</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
 </body>
 <!-- Bootstrap core JavaScript
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
@@ -320,6 +352,9 @@
                     // var opt = {url: "app/integralConfigure?format=json", silent: true };
                     // $('#config').bootstrapTable('refresh',opt);
                     // $("#config").bootstrapTable('refresh', opt);
+                }else if(jsonObj.code == "9999"){
+                    /*session超时*/
+                    loginOutAjax();
                 }
             },
             error: function () {
@@ -365,6 +400,9 @@
                     alertDanger('提示信息：新增失败，请检查参数是否规范！');
                 } else if (status == "success" && jsonObj.code == "1001") {
                     alertDanger('提示信息：新增失败，请检查是否存在相同记录！');
+                } else if(jsonObj.code == "9999"){
+                    /*session超时*/
+                    loginOutAjax();
                 }
 
             },
@@ -501,9 +539,12 @@
             if (data.code == "1005") {
                 $('#updScore').bootstrapTable('load', {total: 0, rows: []});
                 // $('#scoreBasis').bootstrapTable('destroy');
+            } else if(data.code == "9999"){
+                /*session超时*/
+                loginOutAjax();
             } else if (data.code != "1000") {
                 alertWarning('提示信息：查询失败！');
-                $('#updScore').bootstrapTable('load', {total: 0, rows: []});
+                $('#scoreTraining').bootstrapTable('load', {total: 0, rows: []});
             }
         },
         onLoadError: function () {
@@ -645,6 +686,9 @@
                             alertDanger('消息提示：数据为空！');
                         } else if (data.code != "1000") {
                             alertDanger('消息提示：编辑失败！');
+                        } else if(data.code == "9999"){
+                            /*session超时*/
+                            loginOutAjax();
                         } else {
                             alertSuccess('消息提示：编辑成功！');
                             $("#config").bootstrapTable('refresh');
@@ -738,6 +782,9 @@
                                 field: 'id',
                                 values: [row.id]
                             })
+                        } else if(jsonObj.code == "9999"){
+                            /*session超时*/
+                            loginOutAjax();
                         }
                     },
                     error: function () {
@@ -784,6 +831,10 @@
 <script type="text/javascript">
     $.get("menu.html", function (mdata) {
         $("#menuDiv").html(mdata);
+    });
+    $.get("updpass.html", function (mdata) {
+        $("#updPassWdDiv").html(mdata);
     })
+
 </script>
 </html>

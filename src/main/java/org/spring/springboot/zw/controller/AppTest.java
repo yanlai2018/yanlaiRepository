@@ -62,6 +62,7 @@ public class AppTest extends BaseController {
     private IntegrationUpdService integrationUpdService;
     @Autowired
     private DataSourceTransactionManager transactionManager;
+
     /**
      * 查询年份或者课程分类信息
      *
@@ -84,7 +85,7 @@ public class AppTest extends BaseController {
         String id = null;
         PerIntegrationBasis perIntegrationBasis = new PerIntegrationBasis();
 
-        for ( int idd = 1280000;idd < 2560000;idd++) {
+        for (int idd = 1280000; idd < 2560000; idd++) {
             perIntegrationBasis = new PerIntegrationBasis();
             perIntegrationBasis.setUpdateTm(DateUtil.getTime());
             perIntegrationBasis.setLastTimeScore(DateUtil.getTime());
@@ -105,6 +106,25 @@ public class AppTest extends BaseController {
         transactionManager.commit(status);
 
         // 输出返回结果
+        String jsonReturn = JSON.toJSONString(map);
+        return jsonReturn;
+    }
+
+    @RequestMapping(value = "/testTwo", method = RequestMethod.POST)
+    public String testTwo(@RequestBody Map<String, Object> reqMap) {
+        HttpServletRequest request = getRequest();
+        Object o = request.getSession().getAttribute("springboot");
+        logger.info("spring boot===" + o);
+        if (o == null) {
+            logger.info("spring boot===" + o);
+            o = "spring boot 牛逼了!!!有端口" + request.getLocalPort() + "生成";
+            request.getSession().setAttribute("springboot", o);
+            logger.info("spring boot===" + o);
+            logger.info("spring boot getSession getId===" + request.getSession().getId());
+            request.getSession().setAttribute("userId", "111");
+            logger.info("spring boot getSession getuserId===" + request.getSession().getAttribute("userId"));
+        }
+        ReturnData map = new ReturnData();
         String jsonReturn = JSON.toJSONString(map);
         return jsonReturn;
     }

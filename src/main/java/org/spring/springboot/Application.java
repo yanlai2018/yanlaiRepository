@@ -7,7 +7,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
  * Spring Boot 应用启动类
@@ -18,6 +25,8 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 @SpringBootApplication
 // mapper 接口类扫描包配置
 @MapperScan("org.spring.springboot.dao")
+// 开启缓存功能，用于redis共享数据
+@EnableCaching
 /*public class Application {
 
     public static void main(String[] args) {
@@ -31,9 +40,36 @@ public class Application extends SpringBootServletInitializer{
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(Application.class);
     }
+    /**
+     * 编码设置
+     * @return
+     */
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        registrationBean.setFilter(characterEncodingFilter);
+        return registrationBean;
+    }
 
+    /**
+     * session时长设置
+     * @return
+     */
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer(){
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer Container) {
 
+                Container.setSessionTimeout(60*1*1);//单位为S
+            }
+        };
+    }
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
 }
+

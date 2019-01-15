@@ -33,6 +33,15 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- Spring Boot redis组件 -->
+
+        <!--//引入spring session-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+        </dependency>
+
         <!-- Spring Boot Mybatis 依赖 -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

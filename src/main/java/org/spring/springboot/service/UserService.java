@@ -57,6 +57,14 @@ public interface UserService{
 	String loginIn(Map<String, Object> reqMap, Logger logger, HttpServletRequest request);
 
 	/**
+	 * 退出积分系统后台管理系统
+	 * @throws Exception
+	 * @返回值：void
+	 * @创建时间：2019年3月20日 下午1:22:09
+	 */
+	String loginOut(Map<String, Object> reqMap, Logger logger, HttpServletRequest request);
+
+	/**
 	 * 修改积分系统后台管理系统用户信息
 	 * @throws Exception
 	 * @返回值：void

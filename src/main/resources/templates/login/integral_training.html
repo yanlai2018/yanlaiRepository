@@ -60,6 +60,8 @@
     <script type="text/javascript"
             src="../../rewardpoints/static/extensions/addrbar/bootstrap-table-addrbar.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--退出登陆-->
+    <script src="../../rewardpoints/static/login/login-register.js" type="text/javascript"></script>
     <!--[if lt IE 9]-->
     <script type="text/javascript" src="../../rewardpoints/static/login/html5shiv.min.js"></script>
     <script type="text/javascript" src="../../rewardpoints/static/login/respond.min.js"></script>
@@ -85,7 +87,7 @@
 
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
-    <span id="uu" hidden="hidden">${sessionScope.user.userName}</span>
+    <span id="uu" hidden="hidden">${sessionScope.sessionUserId}</span>
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -96,6 +98,12 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/rewardpoints/" style="font-size: 32px;line-height: 25px;">学习平台-积分管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a  onclick="loginUpdAjax()">修改密码</a></li>
+                <li><a  onclick="loginOutAjax()">退出登录</a></li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -157,6 +165,9 @@
         </div>
     </div>
 </div>
+<div id="updPassWdDiv">
+</div>
+</body>
 <script type="text/javascript">
     /*初始化时间控制输入框*/
     $("#creat_dt_begin").datetimepicker({
@@ -320,6 +331,9 @@
                 alertWarning('提示信息：数据为空！');
                 $('#scoreTraining').bootstrapTable('load', {total: 0, rows: []});
                 // $('#scoreTraining').bootstrapTable('destroy');
+            } else if(data.code == "9999"){
+                /*session超时*/
+                loginOutAjax();
             } else if (data.code != "1000") {
                 alertWarning('提示信息：查询失败！');
                 $('#scoreTraining').bootstrapTable('load', {total: 0, rows: []});
@@ -339,9 +353,11 @@
 <script type="text/javascript">
     $.get("menu.html", function (mdata) {
         $("#menuDiv").html(mdata);
+    });
+    $.get("updpass.html", function (mdata) {
+        $("#updPassWdDiv").html(mdata);
     })
 </script>
-</body>
 </html>
 
 

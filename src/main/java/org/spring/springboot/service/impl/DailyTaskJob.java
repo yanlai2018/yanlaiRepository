@@ -60,10 +60,10 @@ public class DailyTaskJob extends BaseController {
     int nowPage = 0;
     long begintime = System.currentTimeMillis();
 
-    //        @Scheduled(cron = "0 0 1 * * ?")   //每天凌晨1点01执行一次,跑批任务，主要针对个人积分过期后的扣减处理
+    @Scheduled(cron = "0 0 1 * * ?")   //每天凌晨1点01执行一次,跑批任务，主要针对个人积分过期后的扣减处理
 //   @Scheduled(cron = "59 * * * * ?")  //每59秒钟执行一次(测试使用)
 //   @Scheduled(cron = "22 45 * * * ?")  //每10秒钟执行一次(测试使用)
-   @Scheduled(cron = "55 18 * * * ?")  //每小时47分31秒执行(测试使用)
+//   @Scheduled(cron = "55 18 * * * ?")  //每小时47分31秒执行(测试使用)
     public void reportCurrentByCron() throws Exception {
         begintime = System.currentTimeMillis();
         final String nowDate = DateUtil.getDay();
