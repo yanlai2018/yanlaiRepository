@@ -124,6 +124,11 @@ function confirmSave() {
     var updNewpassword = $("#updNewpassword").val();
     if (null == updPassword || null == updNewpassword || "" == updPassword || "" == updNewpassword) {
         alertWarning('提示信息：新旧密码均为必输项！');
+        return;
+    }
+    if(updNewpassword === updPassword){
+        alertWarning('提示信息：新密码与旧密码相同！');
+        return;
     }
     var key = CryptoJS.enc.Utf8.parse(ALLENCRYPTCODE);
     // Encrypt

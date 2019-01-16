@@ -281,7 +281,7 @@ public class UserServiceImpl implements UserService {
         request.getSession().setAttribute("sessionUserPwd", passWd); //保存密码
 
         //30分钟之后失效
-        request.getSession().setMaxInactiveInterval(60*1*1);
+        request.getSession().setMaxInactiveInterval(60*1*10);
         String sessionId = request.getSession().getId();
         Cookie cookie = new Cookie("JSESSIONID", sessionId);
         cookie.setPath(request.getContextPath());
@@ -433,7 +433,7 @@ public class UserServiceImpl implements UserService {
             userId = aesDecrypt(userId, Const.ALLENCRYPTCODE);
             perIntegrationUser.setUserId(userId);
             updNum = dao.update("PerIntegrationUserMapper.updatePassWord", perIntegrationUser);
-            if (null == updNum || 0== updNum) {
+            if (null == updNum || "0".equals(updNum.toString())) {
                 logger.info("更新用户基本信息表失败");
                 //事务回滚
                 logger.info("=====================事务回滚======================");

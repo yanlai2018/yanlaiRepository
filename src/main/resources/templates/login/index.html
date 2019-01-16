@@ -465,7 +465,9 @@
         }, {
             field: 'id',
             title: '日志编号',
-            align: 'center'
+            align: 'center',
+            width: '7%',
+            visible: false
         }, {
             field: 'score',
             title: '分数',
@@ -755,7 +757,7 @@
 
         },
         'click .remove': function (e, value, row, index) {
-            Ewin.confirm({message: "确认要删除选择的数据吗？"}).on(function (e) {
+            Ewin.confirm({message: "确认要删除id为【"+row.id+"】的这条数据吗？"}).on(function (e) {
                 if (!e) {
                     return;
                 }

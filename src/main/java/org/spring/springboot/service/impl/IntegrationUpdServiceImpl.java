@@ -508,7 +508,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             map.setCode(Const.FAILURE_CODE);
             try {
                 //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-                efffectiveSts = insertEffectiveScore(decryptBasedDes(userIdObject.toString()), status, map,
+                efffectiveSts = insertEffectiveScore(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                         updScore, logger, contentlist, reqMap);
             } catch (Exception e) {
                 transactionManager.rollback(status);
@@ -528,7 +528,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
 
         //5、个人积分分数变更
         //（1）--查询个人基本信息表------>（2）--更新或者插入个人基本信息表----->（3）--插入积变更日志信息表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         //（1）--变更个人问题点赞积分表（创建或者更新）
         perQuestionIntegration.setIfScore(Const.IF_SORCE_YES);
@@ -655,7 +655,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             map.setCode(Const.FAILURE_CODE);
             try {
                 //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-                efffectiveSts = insertEffectiveScore(decryptBasedDes(userIdObject.toString()), status, map,
+                efffectiveSts = insertEffectiveScore(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                         updScore, logger, contentlist, reqMap);
             } catch (Exception e) {
                 transactionManager.rollback(status);
@@ -675,7 +675,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
 
         //5、个人积分分数变更
         //（1）--查询个人基本信息表------>（2）--更新或者插入个人基本信息表----->（3）--插入积变更日志信息表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         //（1）--变更个人培训班结业积分表（创建或者更新）
         perTrainingIntegration.setIfGraduation(Const.IF_GRADUATION_YES);
@@ -741,7 +741,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         }
         logger.info("检查作业积分信息表是否有数据");
         PerTaskIntegration perTaskIntegration = new PerTaskIntegration();
-        perTaskIntegration.setUserId(decryptBasedDes(userIdObject.toString()));
+        perTaskIntegration.setUserId(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE));
         perTaskIntegration.setId(decryptBasedDes(((Object) reqMap.get("taskid")).toString()));
         //1、查询当前作业积分信息表相关信息
         //默认置为精华
@@ -808,7 +808,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             map.setCode(Const.SUCCESS_CODE);
         }
         //2、变更基本信息表和日志表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         logger.info("更新（或插入）个人积分兑换信息表完成");
         return updBasisAndLogreturn;
@@ -880,7 +880,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         }
         //4、查询当前个人积分汇总表分值是否足够满足兑换条件
         PerIntegrationBasis perIntegrationBasis = new PerIntegrationBasis();
-        perIntegrationBasis.setId(decryptBasedDes(userIdObject.toString()));
+        perIntegrationBasis.setId(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE));
         boolean ifCanExchangeTwo = false;
         boolean ifCanExchange = false;
         String originalScore = null;
@@ -918,7 +918,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         boolean efffectiveStsSub = false;
         try {
             //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-            efffectiveStsSub = subEffectiveScore(loseEfficacy, decryptBasedDes(userIdObject.toString()), status, map,
+            efffectiveStsSub = subEffectiveScore(loseEfficacy, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                     updScore, logger, contentlist, reqMap);
         } catch (Exception e) {
             map.setCode(Const.FAILURE_CODE);
@@ -934,7 +934,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         }
 
         //（1）--查询个人基本信息表------>（2）--更新或者插入个人基本信息表----->（3）--插入积变更日志信息表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         //（1）--个人兑换积分表（新增）
         PerExchangeIntegration perExchangeIntegration = new PerExchangeIntegration();
@@ -1045,7 +1045,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             boolean efffectiveSts = false;
             try {
                 //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-                efffectiveSts = insertEffectiveScore(decryptBasedDes(userIdObject.toString()), status, map,
+                efffectiveSts = insertEffectiveScore(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                         updScore, logger, contentlist, reqMap);
                 if (!efffectiveSts) {
                     //积分有效期表插入失败
@@ -1064,7 +1064,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
 
         //5、个人积分分数变更
         //（1）--查询个人基本信息表------>（2）--更新或者插入个人基本信息表----->（3）--插入积变更日志信息表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         //（1）--变更个人问卷调查积分表（创建或者更新）
         perQuestionnaireIntegration.setIfScore(Const.IF_SORCE_YES);
@@ -1178,7 +1178,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             boolean efffectiveSts = false;
             try {
                 //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-                efffectiveSts = insertEffectiveScore(decryptBasedDes(userIdObject.toString()), status, map,
+                efffectiveSts = insertEffectiveScore(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                         updScore, logger, contentlist, reqMap);
             } catch (Exception e) {
                 transactionManager.rollback(status);
@@ -1196,12 +1196,12 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         }
         //5、个人积分分数变更
         //（1）--查询个人基本信息表------>（2）--更新或者插入个人基本信息表----->（3）--插入积变更日志信息表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         //（1）--变更个人课程积分表（创建或者更新）
         perCourseIntegration.setIfComment(Const.IF_COMMENT_YES);
         perCourseIntegration.setScore(String.valueOf((Integer.valueOf(perCourseIntegration.getScore() == null ? "0" : perCourseIntegration.getScore()) + Integer.valueOf(updScore))));
-        perCourseIntegration.setUserId(decryptBasedDes(userIdObject.toString()));
+        perCourseIntegration.setUserId(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE));
         perCourseIntegration.setUpdateTm(nowDateTime);
         perCourseIntegration.setTmSmp(nowDateTime);
         perCourseIntegration.setCommentNum(String.valueOf((Integer.valueOf(perCourseIntegration.getCommentNum() == null ? "0" : perCourseIntegration.getCommentNum()) + 1)));
@@ -1254,7 +1254,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         // 3、检索课程性质，4、根据课程性质查询积分配置表对应分数，5、个人积分表分数变更，个人课程积分表分数状态变更或者初始化记录，添加一条日志信息
         //查询课程是否已经通过学习获得积分
         PerCourseIntegration perCourseIntegration = new PerCourseIntegration();
-        perCourseIntegration.setUserId(decryptBasedDes(userIdObject.toString()));
+        perCourseIntegration.setUserId(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE));
         perCourseIntegration.setId(decryptBasedDes(((Object) reqMap.get("courseid")).toString()));
         logger.info("查询课程是否已经通过学习获得积分");
         // 课程类型用于下文作为查询条件，进行拼接
@@ -1339,7 +1339,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         boolean efffectiveSts = false;
         try {
             //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-            efffectiveSts = insertEffectiveScore(decryptBasedDes(userIdObject.toString()), status, map,
+            efffectiveSts = insertEffectiveScore(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                     updScore, logger, contentlist, reqMap);
         } catch (Exception e) {
             map.setCode(Const.FAILURE_CODE);
@@ -1357,12 +1357,12 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
         }
         //5、个人积分分数变更
         //（1）--查询个人基本信息表------>（2）--更新或者插入个人基本信息表----->（3）--插入积变更日志信息表
-        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+        ReturnData updBasisAndLogreturn = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                 status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
         //（1）--变更个人课程积分表（创建或者更新）
         perCourseIntegration.setIfLearn(Const.IF_LEARN_YES);
         perCourseIntegration.setScore(String.valueOf((Integer.valueOf(perCourseIntegration.getScore() == null ? "0" : perCourseIntegration.getScore()) + Integer.valueOf(updScore))));
-        perCourseIntegration.setUserId(decryptBasedDes(userIdObject.toString()));
+        perCourseIntegration.setUserId(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE));
         perCourseIntegration.setUpdateTm(nowDateTime);
         perCourseIntegration.setTmSmp(nowDateTime);
         perCourseIntegration.setLearningTm(learnTime);
@@ -1413,7 +1413,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
                                    TransactionStatus status, Map<String, Object> reqMap, HttpServletRequest request) throws Exception {
         logger.info("判断当日该用户是否已经产存在积分变更，如果积分汇总信息表积分已经变更则直接跳过本次积分增加");
         PerIntegrationBasis perIntegrationBasis = new PerIntegrationBasis();
-        perIntegrationBasis.setId(decryptBasedDes(userIdObject.toString()));
+        perIntegrationBasis.setId(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE));
         //注意：因为是判断当日是否存在变更情况所以把当日的日期信息送进去updatetm字段用于like比较，两者不存在完全相等关系
         perIntegrationBasis.setUpdateTm(nowDate);
         List<PerIntegrationBasis> classTypeListBasis = (List<PerIntegrationBasis>) dao.findForList("PerIntegrationBasisMapper.selectByPrimaryKey", perIntegrationBasis);
@@ -1451,7 +1451,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             try {
                 map.setCode(Const.FAILURE_CODE);
                 //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-                efffectiveSts = insertEffectiveScore(decryptBasedDes(userIdObject.toString()), status, map,
+                efffectiveSts = insertEffectiveScore(DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE), status, map,
                         updScore, logger, contentlist, reqMap);
                 if (!efffectiveSts) {
                     //积分有效期表插入失败
@@ -1470,7 +1470,7 @@ public class IntegrationUpdServiceImpl implements IntegrationUpdService {
             ReturnData updScoreBasisAndLog = null;
             try {
                 //1--查询个人基本信息表------>2--更新或者插入个人基本信息表----->3--插入积变更日志信息表
-                updScoreBasisAndLog = updScoreBasis(nowDateTime, nowDate, decryptBasedDes(userIdObject.toString()),
+                updScoreBasisAndLog = updScoreBasis(nowDateTime, nowDate, DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE),
                         status, map, decryptBasedDes(updTypeObject.toString()), updScore, logger, contentlist, reqMap, request);
             } catch (Exception e) {
                 map.setCode(Const.FAILURE_CODE);

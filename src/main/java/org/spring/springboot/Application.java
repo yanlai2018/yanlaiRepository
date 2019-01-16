@@ -63,7 +63,7 @@ public class Application extends SpringBootServletInitializer{
             @Override
             public void customize(ConfigurableEmbeddedServletContainer Container) {
 
-                Container.setSessionTimeout(60*1*1);//单位为S
+                Container.setSessionTimeout(60*1*10);//单位为S
             }
         };
     }

@@ -43,6 +43,12 @@
     <if test="pd.qryTmEnd!= null and pd.qryTmEnd!= ''"><!-- 创建时间 -->
       and creation_tm &lt;= #{pd.qryTmEnd}
     </if>
+    <if test="pd.qryTmBeginUpd!= null and pd.qryTmBeginUpd!= ''"><!-- 修改时间 -->
+      and UPDATE_TM &gt;= #{pd.qryTmBeginUpd}
+    </if>
+    <if test="pd.qryTmEndUpd!= null and pd.qryTmEndUpd!= ''"><!-- 修改时间 -->
+      and UPDATE_TM &lt;= #{pd.qryTmEndUpd}
+    </if>
     order by creation_tm desc  limit #{pd.limitbegin},#{pd.limitend}
     ) a, (
     select
@@ -58,6 +64,12 @@
     </if>
     <if test="pd.qryTmEnd!= null and pd.qryTmEnd!= ''"><!-- 创建时间 -->
       and creation_tm &lt;= #{pd.qryTmEnd}
+    </if>
+    <if test="pd.qryTmBeginUpd!= null and pd.qryTmBeginUpd!= ''"><!-- 修改时间 -->
+      and UPDATE_TM &gt;= #{pd.qryTmBeginUpd}
+    </if>
+    <if test="pd.qryTmEndUpd!= null and pd.qryTmEndUpd!= ''"><!-- 修改时间 -->
+      and UPDATE_TM &lt;= #{pd.qryTmEndUpd}
     </if>
     ) b
   </select>

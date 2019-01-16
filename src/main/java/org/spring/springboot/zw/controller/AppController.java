@@ -278,6 +278,7 @@ public class AppController extends BaseController {
 
     /**
      * 积分管理系统登录
+     *
      * @param reqMap
      * @return
      * @author wangyanlai
@@ -289,7 +290,7 @@ public class AppController extends BaseController {
         PageData pd = new PageData();
         Object passWd = reqMap.get("password");
         Object userNm = reqMap.get("username");
-        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+        if (!StringUtil.isEmpty(passWd) || !StringUtil.isEmpty(userNm)) {
             map.setCode(Const.LOGINFAILURE_CODE);
             String jsonReturn = JSON.toJSONString(map);
             logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
@@ -299,8 +300,10 @@ public class AppController extends BaseController {
         HttpServletRequest request = getRequest();
         return userService.loginIn(reqMap, logger, request);
     }
+
     /**
      * 积分管理系统登录
+     *
      * @param reqMap
      * @return
      * @author wangyanlai
@@ -315,14 +318,14 @@ public class AppController extends BaseController {
     }
 
     //新增用户基本信息信息
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/addUser", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String addUser(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
         ReturnData map = new ReturnData();
         returndata.setCode(Const.FAILURE_CODE);
         Object passWd = reqMap.get("password");
         Object userNm = reqMap.get("username");
-        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+        if (!StringUtil.isEmpty(passWd) || !StringUtil.isEmpty(userNm)) {
             map.setCode(Const.LOGINFAILURE_CODE);
             String jsonReturn = JSON.toJSONString(map);
             logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
@@ -333,14 +336,14 @@ public class AppController extends BaseController {
     }
 
     //变更用户基本信息信息
-    @RequestMapping(value = "/updUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/updUser", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String updUser(@RequestBody Map<String, Object> reqMap) {
         ReturnData map = new ReturnData();
         ReturnData returndata = new ReturnData();
         HttpServletRequest request = getRequest();
         Object passWd = reqMap.get("password");
         Object newpassWd = reqMap.get("newpassword");
-        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(newpassWd)){
+        if (!StringUtil.isEmpty(passWd) || !StringUtil.isEmpty(newpassWd)) {
             map.setCode(Const.LOGINFAILURE_CODE);
             String jsonReturn = JSON.toJSONString(map);
             logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
@@ -350,13 +353,13 @@ public class AppController extends BaseController {
     }
 
     //删除用户基本信息信息
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/deleteUser", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String deleteUser(@RequestBody Map<String, Object> reqMap) {
         ReturnData map = new ReturnData();
         ReturnData returndata = new ReturnData();
         Object passWd = reqMap.get("password");
         Object userNm = reqMap.get("username");
-        if(!StringUtil.isEmpty(passWd)||!StringUtil.isEmpty(userNm)){
+        if (!StringUtil.isEmpty(passWd) || !StringUtil.isEmpty(userNm)) {
             map.setCode(Const.LOGINFAILURE_CODE);
             String jsonReturn = JSON.toJSONString(map);
             logger.info("login---jsonObject.toString()---" + jsonReturn + "---");
@@ -368,12 +371,12 @@ public class AppController extends BaseController {
 
 
     //新增积分配置信息
-    @RequestMapping(value = "/addConfigure", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/addConfigure", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String addConfigure(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
-        logger.info("scoretype======"+reqMap.get("scoretype"));
-        if(org.springframework.util.StringUtils.isEmpty((reqMap.get("scoretype")))){
+        logger.info("scoretype======" + reqMap.get("scoretype"));
+        if (org.springframework.util.StringUtils.isEmpty((reqMap.get("scoretype")))) {
             return JSON.toJSONString(returndata);
         }
         HttpServletRequest request = getRequest();
@@ -381,11 +384,11 @@ public class AppController extends BaseController {
     }
 
     //变更积分配置信息
-    @RequestMapping(value = "/updConfigure", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/updConfigure", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String updConfigure(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
-        if(org.springframework.util.StringUtils.isEmpty((reqMap.get("id")))){
+        if (org.springframework.util.StringUtils.isEmpty((reqMap.get("id")))) {
             return JSON.toJSONString(returndata);
         }
         HttpServletRequest request = getRequest();
@@ -393,11 +396,11 @@ public class AppController extends BaseController {
     }
 
     //删除积分配置信息
-    @RequestMapping(value = "/deleteConfigure", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/deleteConfigure", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String deleteConfigure(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
-        if(org.springframework.util.StringUtils.isEmpty((reqMap.get("id")))){
+        if (org.springframework.util.StringUtils.isEmpty((reqMap.get("id")))) {
             return JSON.toJSONString(returndata);
         }
         HttpServletRequest request = getRequest();
@@ -405,7 +408,7 @@ public class AppController extends BaseController {
     }
 
     //查询积分配置信息
-    @RequestMapping(value = "/integralConfigure", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/integralConfigure", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String queryConfigure(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
@@ -432,29 +435,35 @@ public class AppController extends BaseController {
     private String userId = "userid";
     private String qryType = "qrytype";
     private String updType = "updtype";
+    private String key = "key";
+
     //userid 用户编号
     //qrytype 查询类别
     //updtype 变更类别
-    @RequestMapping(value = "/queryScore", method = RequestMethod.POST, produces="text/html; charset=utf-8")
+    @RequestMapping(value = "/queryScore", method = RequestMethod.POST, produces = "text/html; charset=utf-8")
     public String queryScore(@RequestBody Map<String, Object> reqMap) {
         ReturnData returndata = new ReturnData();
         HttpServletRequest request = getRequest();
-        if(!sessionValidate()){
-            returndata.setCode(Const.LOGIN_TIME_OUT);
-            return JSON.toJSONString(returndata);
+        /*如果外部送进来key字段，有值，并且值与免除session校验的特征值一致，就可以跳过session验证。*/
+        if (!(!org.springframework.util.StringUtils.isEmpty(reqMap.get(key)) && Const.NO_SESSIONOUTTIMEKEY.equals(((Object) reqMap.get(key)).toString()))) {
+            if (!sessionValidate()) {
+                returndata.setCode(Const.LOGIN_TIME_OUT);
+                return JSON.toJSONString(returndata);
+            }
         }
+
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
-        if(org.springframework.util.StringUtils.isEmpty((reqMap.get(qryType)))){
+        if (org.springframework.util.StringUtils.isEmpty((reqMap.get(qryType)))) {
             return JSON.toJSONString(returndata);
         }
-        try{
+        try {
             //当不是查询日志时，用户号必传
-            if(!Const.QUERYSCORE_LOG.equals(decryptBasedDes(((Object)reqMap.get(qryType)).toString()))){
+            if (!Const.QUERYSCORE_LOG.equals(decryptBasedDes(((Object) reqMap.get(qryType)).toString()))) {
                 if (org.springframework.util.StringUtils.isEmpty((reqMap.get(userId)))) {
                     return JSON.toJSONString(returndata);
                 }
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             return JSON.toJSONString(returndata);
         }
         return integrationQryService.qryIntegration(reqMap, logger, request);
@@ -481,9 +490,12 @@ public class AppController extends BaseController {
     public String updScore(@RequestBody Map<String, Object> reqMap) {
         HttpServletRequest request = getRequest();
         ReturnData returndata = new ReturnData();
-        if(!sessionValidate()){
-            returndata.setCode(Const.LOGIN_TIME_OUT);
-            return JSON.toJSONString(returndata);
+        /*如果外部送进来key字段，有值，并且值与免除session校验的特征值一致，就可以跳过session验证。*/
+        if (!(!org.springframework.util.StringUtils.isEmpty(reqMap.get(key)) && Const.NO_SESSIONOUTTIMEKEY.equals(((Object) reqMap.get(key)).toString()))) {
+            if (!sessionValidate()) {
+                returndata.setCode(Const.LOGIN_TIME_OUT);
+                return JSON.toJSONString(returndata);
+            }
         }
         returndata.setCode(Const.IRREGULAR_PARAMETERS);
         if (StringUtils.isBlank(((Object) reqMap.get(userId)).toString()) || StringUtils.isBlank(((Object) reqMap.get(updType)).toString())) {
@@ -496,7 +508,7 @@ public class AppController extends BaseController {
     public boolean sessionValidate() {
         HttpServletRequest request = getRequest();
         String userId = (String) request.getSession().getAttribute("sessionUserId");
-        logger.info("sessionUserId=="+userId);
+        logger.info("sessionUserId==" + userId);
         if (null == userId || "".equals(userId)) {
             logger.info("session超时退出");
             return false;

@@ -45,7 +45,7 @@ public class test {
     public static int i = 0;
 
     public static void main(String[] args) {
-        String aaa = "353601eea8764e61bc94eac174b7b9f4";
+        String aaa = "00000";
         /*00001————> wt5YqDq06SM=
                 00002————>sjQJ/SMWFT8=
                 00003————>shzKJAmLy4M=
@@ -59,14 +59,14 @@ public class test {
                 00011————>26nhwHLJRLk=
                 00012————>HjBNpR+i8k8=
                 00013————>yOzkQprH7To=*/
-        String content = "1122-zzii122.11kkqqlloo";
+        String content = "00000";
         //String content = "123456";  //
         System.out.println("加密前：" + content);
         System.out.println("加密密钥和解密密钥：" + Const.ALLENCRYPTCODE);
         try{
         String encrypt = aesEncrypt(content, Const.ALLENCRYPTCODE);
         System.out.println(encrypt.length()+":加密后：" + encrypt);
-        encrypt = "zFoYX4wtpZrLMXYHRhvD3g==";
+        encrypt = "qUkHqhJPu3yu5QWp9vGKjA==";
         String decrypt = aesDecrypt(encrypt, Const.ALLENCRYPTCODE);
         System.out.println("解密后：" + decrypt);
         }catch (Exception e){

@@ -50,8 +50,13 @@ public class NewScheduledThreadPool {
                     try {
                         new Thread().sleep(100);  //模拟耗时操作
                         System.out.println("[1]=====" + indexnn);
+
+                        if(indexnn == 88){
+                            return 22;
+                        }
                     } catch (Exception e) {
                     }
+
                     return null;
                 }
             }, 0, TimeUnit.SECONDS);

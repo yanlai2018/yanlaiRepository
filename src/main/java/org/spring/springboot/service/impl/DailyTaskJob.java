@@ -6,7 +6,6 @@ import java.util.*;
 import org.slf4j.Logger;
 import base.zw.controller.BaseController;
 import com.alibaba.fastjson.JSONObject;
-import javafx.scene.input.DataFormat;
 import org.apache.commons.lang.StringUtils;
 import org.spring.springboot.dao.DaoSupport;
 import org.spring.springboot.domain.*;
@@ -16,6 +15,7 @@ import org.spring.springboot.zw.util.StringUtil;
 import org.spring.springboot.zw.util.UuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -51,6 +51,7 @@ import static org.spring.springboot.zw.util.DESUtil.encryptBasedDes;
 @Component
 @Configurable
 @EnableScheduling
+//@PropertySource(value = "classpath:application.properties")
 public class DailyTaskJob extends BaseController {
     @Resource(name = "daoSupport")
     private DaoSupport dao;
@@ -59,10 +60,8 @@ public class DailyTaskJob extends BaseController {
     int userNum = 0;
     int nowPage = 0;
     long begintime = System.currentTimeMillis();
-
-    @Scheduled(cron = "0 0 1 * * ?")   //每天凌晨1点01执行一次,跑批任务，主要针对个人积分过期后的扣减处理
-//   @Scheduled(cron = "59 * * * * ?")  //每59秒钟执行一次(测试使用)
-//   @Scheduled(cron = "22 45 * * * ?")  //每10秒钟执行一次(测试使用)
+     @Scheduled(cron = "${dailyEndTime}")
+//   @Scheduled(cron = "0 0 1 * * ?")   //每天凌晨1点01执行一次,跑批任务，主要针对个人积分过期后的扣减处理
 //   @Scheduled(cron = "55 18 * * * ?")  //每小时47分31秒执行(测试使用)
     public void reportCurrentByCron() throws Exception {
         begintime = System.currentTimeMillis();
@@ -273,7 +272,7 @@ public class DailyTaskJob extends BaseController {
             logger.info("该用户" + userIdObject + "不存在过期失效的奖励积分");
         }
         //---------------------更新个人积分变更日志信息表
-        perIntegrationLog.setScoreType(Const.ACTUAL_EFFECT_TIME);
+        perIntegrationLog.setScoreType(Const.AUTO_UPDSCORE);
         perIntegrationLog.setScore(perIntegrationBasis.getScore());
         perIntegrationLog.setUpdScore("-" + String.valueOf(updScore));
         perIntegrationLog.setUserId(perIntegrationBasis.getId());

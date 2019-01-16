@@ -1,0 +1,1871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="rewardpoints:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/Application.java" line="46" mnemonic="4" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="4aa000f1-0ccf-481b-895d-c65736b09fd1" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/rewardpoints$tomcat7.ic" NAME="tomcat7 Coverage Results" MODIFIED="1546585847025" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="mysql: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mysql@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="mysql: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="rewardpoints" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="789" column="25" lean-forward="true" selection-start-line="789" selection-start-column="25" selection-end-line="789" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/UserServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-20">
+              <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APPService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/APPService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-154">
+              <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AppController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="449" column="44" selection-start-line="449" selection-start-column="44" selection-end-line="449" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Const.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/util/Const.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DailyTaskJob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/DailyTaskJob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-238">
+              <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vcs.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IntegrationQryServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="617">
+              <caret line="404" column="10" selection-start-line="404" selection-start-column="10" selection-end-line="404" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+              <folding>
+                <element signature="e#2207#2439#0" expanded="true" />
+                <element signature="e#2438#2439#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="spring-beans.schema" />
+        <option value="FxmlFile" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>base</find>
+      <find>dec</find>
+      <find>CryptoJS.enc.Hex</find>
+      <find>enc</find>
+      <find>key</find>
+      <find>ecb</find>
+      <find>aesDeciphering</find>
+      <find>userid</find>
+      <find>aesDecrypt</find>
+      <find>update_dt_begin</find>
+      <find>creat_dt_begin</find>
+      <find>$(&quot;#update_dt_begin&quot;).datetimepicker(&quot;update&quot;, '2000-01-01');</find>
+      <find>lastC</find>
+      <find>scoreCourse</find>
+      <find>function queryList() {</find>
+      <find>!checkTime(creat_dt_begin, creat_dt_end, update_dt_begin, update_dt_end)</find>
+      <find>queryParams</find>
+      <find>if (!checkTime(creat_dt_begin, creat_dt_end, update_dt_begin, update_dt_end)) {</find>
+      <find>checkTime</find>
+      <find>8 == ((Object) reqMap.get(&quot;qry</find>
+      <find>qryTmEndUpd.substring(0, 4) + &quot;-&quot; + qryTmEndUpd.substring(4, 6) + &quot;-&quot; + qryTmEndUpd.substring(6, 8)</find>
+      <find>qryTmEnd.substring(0, 4) + &quot;-&quot; + qryTmEnd.substring(4, 6) + &quot;-&quot; + qryTmEnd.substring(6, 8)</find>
+      <find>qryTmBegin.substring(0, 4) + &quot;-&quot; + qryTmBegin.substring(4, 6) + &quot;-&quot; + qryTmBegin.substring(6, 8)</find>
+      <find>updUser</find>
+      <find>60*1*30</find>
+      <find>confirmSave</find>
+      <find>qryTmBeginUpd.substring(0, 4) + &quot;-&quot; + qryTmBeginUpd.substring(4, 6) + &quot;-&quot; + qryTmBeginUpd.substring(6, 8)</find>
+      <find>60*1*1</find>
+      <find>999</find>
+      <find>&gt; .active</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>alertWarning('提示信息：查询失败！');</replace>
+      <replace>alertWarning('提示信息：数据为空！');</replace>
+      <replace>alertWarning('提示信息：数据加载失败！');</replace>
+      <replace>;</replace>
+      <replace>);</replace>
+      <replace>00:00:00&quot;;</replace>
+      <replace>23:59:59&quot;;</replace>
+      <replace>alertWarning('消息提醒：请输入规范的日期！');</replace>
+      <replace>alertWarning('消息提醒：起始日期不能大于结束日期！');</replace>
+      <replace>slideDown(500)</replace>
+      <replace>fadeOut(500)</replace>
+      <replace>col-sm-10</replace>
+      <replace>sessionScope.sessionUserId</replace>
+      <replace>else if(data.code == &quot;9999&quot;){                 /*session超时*/                 loginOutAjax();             } else if (data.code != &quot;1000&quot;) {                 alertWarning('提示信息：查询失败！');                 $('#scoreTraining').bootstrapTable('load', {total: 0, rows: []});             }</replace>
+      <replace>!= null and username != '' and username != 'null'&quot;&gt;</replace>
+      <replace>sessionUserId</replace>
+      <replace>60*1*30</replace>
+      <replace />
+      <replace>scoreType</replace>
+      <replace>update</replace>
+      <replace>DESUtil.aesDecrypt(userIdObject.toString(),Const.ALLENCRYPTCODE)</replace>
+      <replace>$(&quot;#update_dt_begin&quot;).datetimepicker(&quot;update&quot;, '2019-01-01');</replace>
+      <replace>10 == ((Object) reqMap.get(&quot;qry</replace>
+      <replace>qryTmBeginUpd.substring</replace>
+      <replace>qryTmBeginUpd</replace>
+      <replace>qryTmEndUpd</replace>
+      <replace>qryTmEnd</replace>
+      <replace>qryTmBegin</replace>
+      <replace>60*1*1</replace>
+      <replace>60*1*10</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\wrkspace1\rewardpoints\src\main\resources\mapper</dir>
+      <dir>D:\wrkspace1\rewardpoints\src\main\java\org\spring\springboot</dir>
+      <dir>D:\wrkspace1\rewardpoints\src\main\resources\static\js</dir>
+      <dir>D:\wrkspace1\rewardpoints\src\main\resources\static\bootstrap3-editable</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/resources/static/login/bootstrap-table.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/extensions/export/jquery.base64.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerIntegrationBasisMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/login/message.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/login/index.js" />
+        <option value="$PROJECT_DIR$/file/数据库建表脚本.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext-redis" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/RedisSessionConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppTest.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/menu.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/eyebrow.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/Controller.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerIntegrationUserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/updpass.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/db/integration数据库mysql版.sql" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/login.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerCourseIntegrationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerIntegrationLogMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerQuestionIntegrationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerTrainingIntegrationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerExchangeIntegrationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerQuestionnaireIntegrationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerTaskIntegrationMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/PerDayendRunbatchMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/dao/NewScheduledThreadPool.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/common.js" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/dao/test.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/lastcommon.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_dayend.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_exchange.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_question.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_questionnaire.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_task.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_training.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/lastCommon.js" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_course.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/login/integral_basis.html" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/login/login-register.js" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/util/Const.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/DailyTaskJob.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\tool\apache-maven-3.6.0\repository2" />
+        <option name="userSettingsFile" value="D:\tool\apache-maven-3.6.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="rewardpoints" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="rewardpoints" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="365" />
+    <option name="y" value="71" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="file" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springboot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="springboot" type="462c0819:PsiDirectoryNode" />
+              <item name="zw" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rewardpoints" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rewardpoints" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="database.console.LAST_STATE" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/src/main/resources/static/extensions/export/tableExport.json" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\static" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\static\login" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\templates" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\mapper" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\java\org\spring\springboot\domain" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.spring.springboot.zw.controller" />
+      <recent name="org.spring.springboot.dao" />
+      <recent name="base.zw.controller" />
+      <recent name="org.spring.springboot.service.impl" />
+      <recent name="org.spring.springboot.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\static\js" />
+      <recent name="D:\wrkspace1\rewardpoints\db" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\templates\login" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources" />
+      <recent name="D:\wrkspace1\rewardpoints\src\main\resources\static\login" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.tomcat7">
+    <configuration name="DESUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.spring.springboot.zw.util.DESUtil" />
+      <module name="rewardpoints" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.spring.springboot.zw.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="GeneratorSqlmap (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="src.GeneratorSqlmap" />
+      <module name="rewardpoints" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="src.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="GeneratorSqlmap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.spring.springboot.dao.GeneratorSqlmap" />
+      <module name="rewardpoints" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.spring.springboot.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="NewScheduledThreadPool" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.spring.springboot.dao.NewScheduledThreadPool" />
+      <module name="rewardpoints" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.spring.springboot.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.spring.springboot.dao.test" />
+      <module name="rewardpoints" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.spring.springboot.dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="generator" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="mybatis-generator:generate" />
+                <option value="-e" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="tomcat7" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.81" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="rewardpoints:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/rewardpoints" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_rewardpoints" />
+        <option name="HTTP_PORT" value="8888" />
+      </server-settings>
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <log_file alias="Tomcat Catalina Log" path="%IDEA_RUN:CATALINA_BASE%/logs/catalina.*" />
+      <log_file alias="Tomcat Localhost Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost.*" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="50933" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="rewardpoints:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Maven.generator" />
+      <item itemvalue="Tomcat Server.tomcat7" />
+      <item itemvalue="Application.test" />
+      <item itemvalue="Application.GeneratorSqlmap" />
+      <item itemvalue="Application.GeneratorSqlmap (1)" />
+      <item itemvalue="Application.NewScheduledThreadPool" />
+      <item itemvalue="Application.DESUtil" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+        <item itemvalue="Application.NewScheduledThreadPool" />
+        <item itemvalue="Application.DESUtil" />
+        <item itemvalue="Application.GeneratorSqlmap" />
+        <item itemvalue="Application.GeneratorSqlmap (1)" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\wangyanlai\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="true" />
+  </component>
+  <component name="SvnFileUrlMappingImpl">
+    <option name="myMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\wrkspace1\rewardpoints" />
+          <option name="myCopyRoot" value="D:\wrkspace1\rewardpoints" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+    <option name="myMoreRealMappingRoots">
+      <list>
+        <SvnCopyRootSimple>
+          <option name="myVcsRoot" value="D:\wrkspace1\rewardpoints" />
+          <option name="myCopyRoot" value="D:\wrkspace1\rewardpoints" />
+        </SvnCopyRootSimple>
+      </list>
+    </option>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4aa000f1-0ccf-481b-895d-c65736b09fd1" name="Default" comment="" />
+      <created>1544751157748</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1544751157748</updated>
+      <workItem from="1544751163614" duration="1721000" />
+      <workItem from="1544753288608" duration="32000" />
+      <workItem from="1544753337802" duration="89000" />
+      <workItem from="1544753446210" duration="129000" />
+      <workItem from="1544753593330" duration="19491000" />
+      <workItem from="1545009878843" duration="599000" />
+      <workItem from="1545032626128" duration="79197000" />
+      <workItem from="1545214757946" duration="455000" />
+      <workItem from="1545215236441" duration="35908000" />
+      <workItem from="1545304661269" duration="15381000" />
+      <workItem from="1545363374307" duration="19672000" />
+      <workItem from="1545613405389" duration="95443000" />
+      <workItem from="1545817352115" duration="7762000" />
+      <workItem from="1545825592072" duration="1637000" />
+      <workItem from="1545873129387" duration="3984000" />
+      <workItem from="1545877527990" duration="6782000" />
+      <workItem from="1545889107495" duration="10763000" />
+      <workItem from="1545900883229" duration="27356000" />
+      <workItem from="1545978959980" duration="28919000" />
+      <workItem from="1546072402165" duration="595000" />
+      <workItem from="1546150517271" duration="19398000" />
+      <workItem from="1546392621698" duration="45048000" />
+      <workItem from="1546492659518" duration="68960000" />
+      <workItem from="1546824098595" duration="51924000" />
+      <workItem from="1546928063116" duration="16395000" />
+      <workItem from="1546944578567" duration="51582000" />
+      <workItem from="1547082221773" duration="33007000" />
+      <workItem from="1547168002825" duration="30119000" />
+      <workItem from="1547266215152" duration="13770000" />
+      <workItem from="1547283158302" duration="4176000" />
+      <workItem from="1547287679405" duration="8508000" />
+      <workItem from="1547428189903" duration="35505000" />
+      <workItem from="1547513745886" duration="7179000" />
+      <workItem from="1547521722597" duration="30000" />
+      <workItem from="1547521997572" duration="30017000" />
+      <workItem from="1547599352134" duration="13963000" />
+    </task>
+    <task id="LOCAL-00057" summary="更新文档">
+      <created>1547114058157</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1547114058157</updated>
+    </task>
+    <task id="LOCAL-00058" summary="更新代码">
+      <created>1547114094100</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1547114094100</updated>
+    </task>
+    <task id="LOCAL-00059" summary="更新代码">
+      <created>1547114123980</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1547114123980</updated>
+    </task>
+    <task id="LOCAL-00060" summary="更新前台页面">
+      <created>1547114396463</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1547114396463</updated>
+    </task>
+    <task id="LOCAL-00061" summary="更新配置文件">
+      <created>1547115034224</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1547115034224</updated>
+    </task>
+    <task id="LOCAL-00062" summary="更新配置文件">
+      <created>1547115234867</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1547115234867</updated>
+    </task>
+    <task id="LOCAL-00063" summary="更新前台html">
+      <created>1547168693801</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1547168693802</updated>
+    </task>
+    <task id="LOCAL-00064" summary="更新文档">
+      <created>1547168715089</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1547168715089</updated>
+    </task>
+    <task id="LOCAL-00065" summary="更新前台js">
+      <created>1547185575729</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1547185575729</updated>
+    </task>
+    <task id="LOCAL-00066" summary="更新文档">
+      <created>1547198274100</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1547198274100</updated>
+    </task>
+    <task id="LOCAL-00067" summary="更新后台代码">
+      <created>1547198294309</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1547198294309</updated>
+    </task>
+    <task id="LOCAL-00068" summary="更新前台js">
+      <created>1547198315118</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1547198315118</updated>
+    </task>
+    <task id="LOCAL-00069" summary="更新前台页面">
+      <created>1547198354232</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1547198354232</updated>
+    </task>
+    <task id="LOCAL-00070" summary="提交git">
+      <created>1547266579372</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1547266579372</updated>
+    </task>
+    <task id="LOCAL-00071" summary="提交git">
+      <created>1547266795742</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1547266795742</updated>
+    </task>
+    <task id="LOCAL-00072" summary="提交git">
+      <created>1547266964927</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1547266964927</updated>
+    </task>
+    <task id="LOCAL-00073" summary="提交git">
+      <created>1547267045907</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1547267045907</updated>
+    </task>
+    <task id="LOCAL-00074" summary="提交git">
+      <created>1547280203901</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1547280203901</updated>
+    </task>
+    <task id="LOCAL-00075" summary="提交git">
+      <created>1547295231058</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1547295231059</updated>
+    </task>
+    <task id="LOCAL-00076" summary="提交git">
+      <created>1547303632552</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1547303632553</updated>
+    </task>
+    <task id="LOCAL-00077" summary="更新文档">
+      <created>1547303831755</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1547303831755</updated>
+    </task>
+    <task id="LOCAL-00078" summary="更新pom">
+      <created>1547303879181</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1547303879181</updated>
+    </task>
+    <task id="LOCAL-00079" summary="更新文档">
+      <created>1547304037629</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1547304037629</updated>
+    </task>
+    <task id="LOCAL-00080" summary="更新文档">
+      <created>1547304700586</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1547304700587</updated>
+    </task>
+    <task id="LOCAL-00081" summary="更新代码">
+      <created>1547468939547</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1547468939547</updated>
+    </task>
+    <task id="LOCAL-00082" summary="更新代码">
+      <created>1547468960776</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1547468960776</updated>
+    </task>
+    <task id="LOCAL-00083" summary="更新代码">
+      <created>1547516261859</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1547516261859</updated>
+    </task>
+    <task id="LOCAL-00084" summary="更新代码">
+      <created>1547516475115</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1547516475115</updated>
+    </task>
+    <task id="LOCAL-00085" summary="更新代码">
+      <created>1547517874729</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1547517874730</updated>
+    </task>
+    <task id="LOCAL-00086" summary="更新代码">
+      <created>1547517897624</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1547517897624</updated>
+    </task>
+    <task id="LOCAL-00087" summary="更新代码">
+      <created>1547517914365</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1547517914365</updated>
+    </task>
+    <task id="LOCAL-00088" summary="更新代码">
+      <created>1547517943057</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1547517943057</updated>
+    </task>
+    <task id="LOCAL-00089" summary="更新代码">
+      <created>1547519485482</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1547519485482</updated>
+    </task>
+    <task id="LOCAL-00090" summary="更新代码">
+      <created>1547519510353</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1547519510353</updated>
+    </task>
+    <task id="LOCAL-00091" summary="更新代码30分钟失效session">
+      <created>1547521622964</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1547521622964</updated>
+    </task>
+    <task id="LOCAL-00092" summary="更新代码30分钟失效session">
+      <created>1547521641123</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1547521641123</updated>
+    </task>
+    <task id="LOCAL-00093" summary="更新sql脚本">
+      <created>1547522421062</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1547522421062</updated>
+    </task>
+    <task id="LOCAL-00094" summary="更新sql脚本">
+      <created>1547523496430</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1547523496430</updated>
+    </task>
+    <task id="LOCAL-00095" summary="更新代码">
+      <created>1547532767127</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1547532767127</updated>
+    </task>
+    <task id="LOCAL-00096" summary="更新代码">
+      <created>1547532825915</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1547532825915</updated>
+    </task>
+    <task id="LOCAL-00097" summary="更新代码">
+      <created>1547532922716</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1547532922716</updated>
+    </task>
+    <task id="LOCAL-00098" summary="提交js代码">
+      <created>1547533023819</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1547533023819</updated>
+    </task>
+    <task id="LOCAL-00099" summary="更新页面展示">
+      <created>1547536373689</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1547536373689</updated>
+    </task>
+    <task id="LOCAL-00100" summary="更新文档">
+      <created>1547617501867</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1547617501869</updated>
+    </task>
+    <task id="LOCAL-00101" summary="更新代码">
+      <created>1547617573931</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1547617573931</updated>
+    </task>
+    <task id="LOCAL-00102" summary="更新代码">
+      <created>1547618887803</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1547618887803</updated>
+    </task>
+    <task id="LOCAL-00103" summary="更新代码">
+      <created>1547619066742</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1547619066743</updated>
+    </task>
+    <task id="LOCAL-00104" summary="更新代码，日终参数可以在配置文件中进行配置">
+      <created>1547619466469</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1547619466469</updated>
+    </task>
+    <task id="LOCAL-00105" summary="更新代码，还原数据库参数">
+      <created>1547619656492</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1547619656492</updated>
+    </task>
+    <option name="localTasksCounter" value="106" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_rewardpoints - 2018.12.14 at 09h 53m 43s.xml">
+      <configuration name="All in rewardpoints" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="newmapper_in_rewardpoints - 2018.12.19 at 18h 02m 12s.xml">
+      <configuration name="newmapper in rewardpoints" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="785496000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.50479746" side_tool="true" weight="0.35844994" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3295964" />
+      <window_info anchor="right" id="Maven Projects" order="10" sideWeight="0.4984326" weight="0.32995737" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
+      <window_info id="Structure" order="1" sideWeight="0.5064011" side_tool="true" weight="0.19989339" />
+      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.4984326" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49520257" visible="true" weight="0.3588362" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32938644" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3110872" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32938644" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49573562" weight="0.32831" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.35522068" />
+      <window_info anchor="bottom" id="Spring" order="8" weight="0.32938644" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32938644" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49328858" visible="true" weight="0.14978679" />
+      <window_info anchor="bottom" id="Problems" order="17" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.32995737" />
+      <window_info id="Web" order="6" sideWeight="0.50239235" side_tool="true" weight="0.19722815" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32938644" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Favorites" order="5" sideWeight="0.5067114" side_tool="true" weight="0.14978679" />
+      <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.32938644" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5015674" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32938644" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3295964" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49840087" weight="0.35522068" />
+      <window_info anchor="bottom" id="Spring" order="8" weight="0.32938644" />
+      <window_info anchor="bottom" id="Database Console" order="14" weight="0.32938644" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32938644" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" sideWeight="0.4984326" weight="0.25" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" sideWeight="0.50479233" side_tool="true" weight="0.19989339" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32938644" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="bottom" id="Inspection Results" order="15" weight="0.32938644" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.50479746" side_tool="true" weight="0.35844994" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49840087" weight="0.3110872" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32938644" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Problems" order="17" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" weight="0.32938644" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49573562" weight="0.32831" />
+      <window_info anchor="right" id="Maven Projects" order="10" sideWeight="0.4984326" weight="0.32995737" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49359885" visible="true" weight="0.14818764" />
+      <window_info anchor="right" id="Database" order="5" weight="0.32995737" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Web" order="6" sideWeight="0.50239235" side_tool="true" weight="0.19722815" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info id="Structure" order="1" sideWeight="0.5064011" side_tool="true" weight="0.19989339" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Coverage" order="9" sideWeight="0.5015674" side_tool="true" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49520257" visible="true" weight="0.35844994" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.32995737" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="更新pom文件" />
+    <MESSAGE value="依据代码规范更新代码" />
+    <MESSAGE value="最终定下来使用newScheduledThreadPool线程池，每万个用户21秒每天，0点01自动触发执行" />
+    <MESSAGE value="增加用户操作日志表mapper.xml和实体" />
+    <MESSAGE value="添加用户操作日志，针对所有查询，变更，系统跑批处理" />
+    <MESSAGE value="更新说明文档" />
+    <MESSAGE value="更新实体，增加主键标识" />
+    <MESSAGE value="更新日终时间" />
+    <MESSAGE value="更新" />
+    <MESSAGE value="更新前台代码" />
+    <MESSAGE value="更新配置文件" />
+    <MESSAGE value="更新前台html" />
+    <MESSAGE value="更新后台代码" />
+    <MESSAGE value="更新前台js" />
+    <MESSAGE value="更新前台页面" />
+    <MESSAGE value="提交git" />
+    <MESSAGE value="更新pom" />
+    <MESSAGE value="更新代码30分钟失效session" />
+    <MESSAGE value="更新sql脚本" />
+    <MESSAGE value="提交js代码" />
+    <MESSAGE value="更新页面展示" />
+    <MESSAGE value="更新文档" />
+    <MESSAGE value="更新代码" />
+    <MESSAGE value="更新代码，日终参数可以在配置文件中进行配置" />
+    <MESSAGE value="更新代码，还原数据库参数" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新代码，还原数据库参数" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java</url>
+          <line>240</line>
+          <properties />
+          <option name="timeStamp" value="371" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java</url>
+          <line>62</line>
+          <properties />
+          <option name="timeStamp" value="377" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java</url>
+          <line>156</line>
+          <properties />
+          <option name="timeStamp" value="380" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java</url>
+          <line>475</line>
+          <properties />
+          <option name="timeStamp" value="387" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java</url>
+          <line>449</line>
+          <properties />
+          <option name="timeStamp" value="391" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java</url>
+          <line>403</line>
+          <properties />
+          <option name="timeStamp" value="399" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/DailyTaskJob.java</url>
+          <line>292</line>
+          <properties />
+          <option name="timeStamp" value="405" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/DailyTaskJob.java</url>
+          <line>265</line>
+          <properties />
+          <option name="timeStamp" value="406" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppTest.java</url>
+          <line>114</line>
+          <properties />
+          <option name="timeStamp" value="412" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/UserServiceImpl.java</url>
+          <line>137</line>
+          <properties />
+          <option name="timeStamp" value="414" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java</url>
+          <line>749</line>
+          <properties />
+          <option name="timeStamp" value="419" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java</url>
+          <line>742</line>
+          <properties />
+          <option name="timeStamp" value="420" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java</url>
+          <line>254</line>
+          <properties />
+          <option name="timeStamp" value="423" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppController.java</url>
+          <line>93</line>
+          <properties class="org.spring.springboot.zw.controller.AppController" method="login">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="335" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppController.java</url>
+          <line>374</line>
+          <properties class="org.spring.springboot.zw.controller.AppController" method="addConfigure">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="381" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppController.java</url>
+          <line>399</line>
+          <properties class="org.spring.springboot.zw.controller.AppController" method="deleteConfigure">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="382" />
+        </line-breakpoint>
+      </breakpoints>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="426" />
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PerQuestionnaireIntegrationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PerExchangeIntegrationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="73" column="9" lean-forward="true" selection-start-line="68" selection-start-column="4" selection-end-line="73" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PerTaskIntegrationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="68" column="3" lean-forward="true" selection-start-line="68" selection-start-column="3" selection-end-line="73" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PerDayendRunbatchMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/PerTrainingIntegrationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/dao/NewScheduledThreadPool.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="60" column="17" lean-forward="true" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/domain/PageData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/base/zw/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationUpdServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="427" selection-start-line="427" selection-end-line="427" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-web/4.3.6.RELEASE/spring-web-4.3.6.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="410" selection-start-line="410" selection-end-line="410" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="407" selection-start-line="407" selection-end-line="407" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/com/alibaba/druid/1.1.6/druid-1.1.6.jar!/com/alibaba/druid/support/http/WebStatFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-web/4.3.6.RELEASE/spring-web-4.3.6.RELEASE.jar!/org/springframework/web/filter/CharacterEncodingFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/boot/spring-boot/1.5.1.RELEASE/spring-boot-1.5.1.RELEASE.jar!/org/springframework/boot/web/support/ErrorPageFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="64" selection-start-line="64" selection-end-line="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/apache/tomcat/embed/tomcat-embed-core/8.5.11/tomcat-embed-core-8.5.11.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="41" column="113" selection-start-line="41" selection-start-column="113" selection-end-line="41" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-webmvc/4.3.6.RELEASE/spring-webmvc-4.3.6.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="465" selection-start-line="465" selection-end-line="465" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/springframework/spring-web/4.3.6.RELEASE/spring-web-4.3.6.RELEASE.jar!/org/springframework/web/filter/OncePerRequestFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/tool/apache-maven-3.6.0/repository2/org/apache/tomcat/embed/tomcat-embed-websocket/8.5.11/tomcat-embed-websocket-8.5.11.jar!/org/apache/tomcat/websocket/server/WsFilter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-484">
+          <caret line="175" column="24" selection-start-line="175" selection-start-column="24" selection-end-line="175" selection-end-column="24" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/extensions/export/bootstrap-table-export.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/extensions/export/jquery.base64.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-746">
+          <caret line="27" column="19" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login/aes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/docs/assets/js/vendor/autoprefixer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="18248" column="7" selection-start-line="18248" selection-start-column="7" selection-end-line="18248" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="53" column="37" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/dao/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="66" column="31" lean-forward="true" selection-start-line="66" selection-start-column="31" selection-end-line="66" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/util/DESUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="150" column="90" lean-forward="true" selection-start-line="150" selection-start-column="90" selection-end-line="150" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_dayend.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="268" column="9" lean-forward="true" selection-start-line="255" selection-start-column="7" selection-end-line="268" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_exchange.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="272" column="12" selection-start-line="272" selection-start-column="12" selection-end-line="273" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="254" column="8" selection-start-line="254" selection-start-column="8" selection-end-line="267" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_questionnaire.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="279" lean-forward="true" selection-start-line="279" selection-end-line="280" selection-end-column="39" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="253" column="8" lean-forward="true" selection-start-line="253" selection-start-column="8" selection-end-line="266" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_training.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="260" column="2" lean-forward="true" selection-start-line="260" selection-start-column="2" selection-end-line="260" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/lastCommon.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_course.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="260" column="22" selection-start-line="260" selection-start-column="13" selection-end-line="260" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/integral_basis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="246" column="51" lean-forward="true" selection-start-line="246" selection-start-column="51" selection-end-line="246" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/updpass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/login/login-register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="166" column="38" selection-start-line="166" selection-start-column="38" selection-end-line="166" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/IntegrationQryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="617">
+          <caret line="404" column="10" selection-start-line="404" selection-start-column="10" selection-end-line="404" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/APPService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-154">
+          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/controller/AppController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="449" column="44" selection-start-line="449" selection-start-column="44" selection-end-line="449" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="789" column="25" lean-forward="true" selection-start-line="789" selection-start-column="25" selection-end-line="789" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="68" column="5" lean-forward="true" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+          <folding>
+            <element signature="e#2207#2439#0" expanded="true" />
+            <element signature="e#2438#2439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/service/impl/DailyTaskJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/spring/springboot/zw/util/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="35" column="67" selection-start-line="35" selection-start-column="67" selection-end-line="35" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/vcs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>rewardpoints:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring|rewardpoints</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.alibaba:druid-spring-boot-starter:1.1.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -62,7 +62,7 @@
             src="../../rewardpoints/static/extensions/addrbar/bootstrap-table-addrbar.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--退出登陆-->
-    <link href="../../rewardpoints/static/login/login-register.css" rel="stylesheet" />
+    <link href="../../rewardpoints/static/login/login-register.css" rel="stylesheet"/>
     <script src="../../rewardpoints/static/login/login-register.js" type="text/javascript"></script>
     <!--[if lt IE 9]-->
     <script type="text/javascript" src="../../rewardpoints/static/login/html5shiv.min.js"></script>
@@ -88,6 +88,9 @@
     <script type="text/javascript" src="../../rewardpoints/static/extensions/export/jquery.base64.js"></script>
     <script type="text/javascript" src="../../rewardpoints/static/extensions/export/bootstrap-table-export.js"></script>
     <script type="text/javascript" src="../../rewardpoints/static/extensions/export/tableExport.js"></script>
+    <!--最后引用的公共js建立在应用了其他js的基础之上引用的-->
+    <script type="text/javascript" src="../../rewardpoints/static/js/lastCommon.js"></script>
+
 </head>
 
 <body>
@@ -106,8 +109,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a  onclick="loginUpdAjax()">修改密码</a></li>
-                <li><a  onclick="loginOutAjax()">退出登录</a></li>
+                <li><a onclick="loginUpdAjax()">修改密码</a></li>
+                <li><a onclick="loginOutAjax()">退出登录</a></li>
             </ul>
         </div>
     </div>
@@ -131,32 +134,49 @@
                     <form class="form-inline query_ipt">
                         <div class="row">
                             <div class="col-sm-10" align="left">
-                                <div class="form-group ipt_item">
-                                    <span class="form_til">用户号</span>
-                                    <input type="text" class=" input-sm" id="id" name="id"
-                                           placeholder="请输入用户号">
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <div class="form-group ipt_item">
-                                    <span class="form_til">创建时间</span>
-                                    <span class="input-icon">
+                                <form id="queryinput">
+
+                                    <tr align="left"><span class="form_til">创建时间</span></td>
+                                        <td><span class="input-icon">
 												     <input type="text" id="creat_dt_begin" name="creat_dt_begin"
                                                             class="date-picker">
 												     <i class="icon-calendar blue"></i>
-											        </span>
-                                    —
-                                    <span class="input-icon">
+											        </span></td>
+                                        —
+                                        <td><span class="input-icon">
 												     <input type="text" id="creat_dt_end" name="creat_dt_end"
                                                             class="date-picker">
 												     <i class="icon-calendar blue"></i>
-											        </span>
-                                </div>
+											        </span></td>
+                                    </tr>
+                                    <tr align="left">
+                                        <td><span class="form_til">用 户 号</span></td>
+                                        <td><input type="text" class=" input-sm" id="id" name="id"
+                                                   placeholder="请输入用户号"></td>
+                                    </tr>
+                                    <br>
+                                    <tr align="left">
+                                        <span class="form_til">更新时间</span>
+                                        <td><span class="input-icon">
+												     <input type="text" id="update_dt_begin" name="update_dt_begin"
+                                                            class="date-picker">
+												     <i class="icon-calendar blue"></i>
+                                        </span></td>
+                                        —
+                                        <td><span class="input-icon">
+												     <input type="text" id="update_dt_end" name="update_dt_end"
+                                                            class="date-picker">
+												     <i class="icon-calendar blue"></i>
+											        </span></td>
+
+                                    </tr>
+                                </form>
                             </div>
                             <div class="col-sm-2" align="left">
-                                <button type="button" class="btn btn-primary" id="updConfig"
+                                <button type="button" class="btn btn-primary"
                                         onclick="queryList()">查询
                                 </button>
-                                <font id="updConfigFig">&nbsp;</font>
+
                             </div>
                         </div>
                     </form>
@@ -193,9 +213,40 @@
         todayBtn: true//今日按钮
     });
 
+    /*更新时间控制输入框*/
+    $("#update_dt_begin").datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
+        autoclose: true,//选中关闭
+        todayBtn: true//今日按钮
+    });
+    /*更新时间控制输入框*/
+    $("#update_dt_end").datetimepicker({
+        minView: "month", //选择日期后，不会再跳转去选择时分秒
+        language: 'zh-CN',
+        format: 'yyyy-mm-dd',
+        autoclose: true,//选中关闭
+        todayBtn: true//今日按钮
+    });
+
+    $("#creat_dt_begin").datetimepicker("update", '2000-01-01');
+    $("#creat_dt_end").datetimepicker('setDate', (new Date()));
+    $("#update_dt_begin").datetimepicker("update", '2019-01-01');
+    $("#update_dt_end").datetimepicker('setDate', (new Date()));
+
     function queryList() {
+        var creat_dt_begin = $("#creat_dt_begin").val();
+        var creat_dt_end = $("#creat_dt_end").val();
+        var update_dt_begin = $("#update_dt_begin").val();
+        var update_dt_end = $("#update_dt_end").val();
+        /*验证时间输入是否合理*/
+        if (!checkTime(creat_dt_begin, creat_dt_end, update_dt_begin, update_dt_end)) {
+            return;
+        }
         $("#scoreBasis").bootstrapTable('refresh');
     }
+
 
     //初始化得到查询的参数
     function queryParams(params) {
@@ -214,33 +265,17 @@
         userId = encrypted.toString();
         var creat_dt_begin = $("#creat_dt_begin").val();
         var creat_dt_end = $("#creat_dt_end").val();
-        if (null != creat_dt_begin && '' != creat_dt_begin) {
-            if (creat_dt_begin.length != 10) {
-                alertWarning('消息提醒：请输入规范的日期！');
-                return;
-            }
-            creat_dt_begin = creat_dt_begin.substring(0, 4) + creat_dt_begin.substring(5, 7) + creat_dt_begin.substring(8, 10);
-            if (!isNumber(creat_dt_begin)) {
-                alertWarning('消息提醒：请输入规范的日期！');
-                return;
-            }
-        }
-        if (null != creat_dt_end && '' != creat_dt_end) {
-            if (creat_dt_end.length != 10) {
-                alertWarning('消息提醒：请输入规范的日期！');
-                return;
-            }
-            creat_dt_end = creat_dt_end.substring(0, 4) + creat_dt_end.substring(5, 7) + creat_dt_end.substring(8, 10);
-            if (!isNumber(creat_dt_end)) {
-               alertWarning('消息提醒：请输入规范的日期！');
-                return;
-            }
-        }
-        if (null != creat_dt_end && '' != creat_dt_end && null != creat_dt_begin && '' != creat_dt_begin) {
-            if (creat_dt_end < creat_dt_begin) {
-                alertWarning('消息提醒：起始日期不能大于结束日期！');
-                return;
-            }
+        var update_dt_begin = $("#update_dt_begin").val();
+        var update_dt_end = $("#update_dt_end").val();
+        /*验证时间输入是否合理*/
+        if (!checkTime(creat_dt_begin, creat_dt_end, update_dt_begin, update_dt_end)) {
+            var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                // limit: params.limit,   //页面大小
+                offset: params.offset,  //页码
+                pageSize: this.pageSize,
+                pageNumber: this.pageNumber
+            };
+            return temp;
         }
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             // limit: params.limit,   //页面大小
@@ -251,6 +286,8 @@
             userid: userId,
             qrytmbegin: creat_dt_begin,
             qrytmend: creat_dt_end,
+            qrytmbeginupd: update_dt_begin,
+            qrytmendupd: update_dt_end,
             length: 6
         };
         return temp;
@@ -270,7 +307,7 @@
         paginationLoop: true,
         pageNumber: 1,
         pageSize: 10,
-        pageList: [1, 5, 10, 20, 100, 1000],
+        pageList: [1, 5, 10, 20, 100],
         striped: true,
         showColumns: true,  //显示下拉框勾选要显示的列
         sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
@@ -298,7 +335,9 @@
             field: 'id',
             title: '用户id',
             align: 'center',
-            hidden: true
+            formatter: function (value, row, index) {
+                return aesDeciphering(value);
+            }
         }, {
             field: 'score',
             title: '奖励分数',
@@ -307,6 +346,44 @@
         }, {
             field: 'original_score',
             title: '初始分数',
+            align: 'center'
+        }, {
+            field: 'loginscore',
+            title: '登陆得分汇总',
+            align: 'center',
+            hidden: true
+        }, {
+            field: 'commentscore',
+            title: '评论得分汇总',
+            align: 'center'
+
+        }, {
+            field: 'learnscore',
+            title: '课程学习得分汇总',
+            align: 'center'
+        }, {
+            field: 'hostilitycommentscore',
+            title: '恶意评论得分汇总',
+            align: 'center'
+        }, {
+            field: 'taskscore',
+            title: '作业得分汇总',
+            align: 'center'
+        }, {
+            field: 'questionscore',
+            title: '问卷调查得分汇总',
+            align: 'center'
+        }, {
+            title: '兑换得分汇总',
+            field: 'exchangescore',
+            align: 'center'
+        }, {
+            field: 'trainscore',
+            title: '培训得分汇总',
+            align: 'center'
+        }, {
+            field: 'dailytaskscore',
+            title: '失效积分汇总',
             align: 'center'
         }, {
             field: 'last_time_score',
@@ -340,7 +417,7 @@
                 alertWarning('消息提醒：数据为空！');
                 $('#scoreBasis').bootstrapTable('load', {total: 0, rows: []});
                 // $('#scoreBasis').bootstrapTable('destroy');
-            } else if(data.code == "9999"){
+            } else if (data.code == "9999") {
                 /*session超时*/
                 loginOutAjax();
             } else if (data.code != "1000") {

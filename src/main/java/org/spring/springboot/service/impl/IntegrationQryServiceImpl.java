@@ -58,7 +58,8 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
         page.setPd(qureyData);
         logger.info("查询个人积分配置信息开始");
         try {
-            List<PageData> classTypeList0 = (List<PageData>) dao.findForList("PerIntegrationConfigureMapper.selectAllListPage", page);/*PerIntegrationLogMapper.selectByexamplePage*/
+            /*查询个人积分配置表*/
+            List<PageData> classTypeList0 = (List<PageData>) dao.findForList("PerIntegrationConfigureMapper.selectAllListPage", page);
             if (classTypeList0 != null && classTypeList0.size() != 0) {
                 HashMap totalMap = new HashMap();
                 totalMap.put("total", String.valueOf(classTypeList0.size()));
@@ -162,23 +163,6 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                 //查询码QUERYSCORE_PER【00000】查询个人积分汇总信息=====本分支仅用于查询个人积分汇总信息
                 PerIntegrationBasis perIntegrationBasis = new PerIntegrationBasis();
                 logger.info("查询个人积分汇总信息开始");
-
-                String qryTmBegin = "";
-                String qryTmEnd = "";
-                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (8 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
-                    qryTmBegin = ((Object) reqMap.get("qrytmbegin")).toString();
-                    qryTmBegin = qryTmBegin.substring(0, 4) + "-" + qryTmBegin.substring(4, 6) + "-" + qryTmBegin.substring(6, 8)+" 00:00:00";
-                }else{
-                    qryTmBegin = Const.EARLIEST_TIME;
-                    //默认最早时间1000-01-01 00:00:01
-                }
-                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (8 == ((Object) reqMap.get("qrytmend")).toString().length())) {
-                    qryTmEnd = ((Object) reqMap.get("qrytmend")).toString();
-                    qryTmEnd = qryTmEnd.substring(0, 4) + "-" + qryTmEnd.substring(4, 6) + "-" + qryTmEnd.substring(6, 8)+" 23:59:59";
-                }else{
-                    qryTmEnd = Const.LATE_ARRIVAL_TIME;
-                    //默认最晚时间"5000-01-01 00:00:01"
-                }
                 //添加分页信息
                 PageData qureyData = new PageData();
                 Object pageSize = reqMap.get("pageSize");
@@ -202,8 +186,43 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                 } else {
                     qureyData.put("id", DESUtil.aesDecrypt(userId, Const.ALLENCRYPTCODE));
                 }
+                /*创建时间更新时间初始化*/
+                String qryTmBegin = "";
+                String qryTmEnd = "";
+                String qryTmBeginUpd = "";
+                String qryTmEndUpd = "";
+                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (10 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
+                    qryTmBegin = ((Object) reqMap.get("qrytmbegin")).toString();
+                    qryTmBegin = qryTmBegin;
+                } else {
+                    qryTmBegin = Const.EARLIEST_TIME;
+                    //默认最早时间1000-01-01 00:00:01
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (10 == ((Object) reqMap.get("qrytmend")).toString().length())) {
+                    qryTmEnd = ((Object) reqMap.get("qrytmend")).toString();
+                    qryTmEnd = qryTmEnd;
+                } else {
+                    qryTmEnd = Const.LATE_ARRIVAL_TIME;
+                    //默认最晚时间"5000-01-01 00:00:01"
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmbeginupd")) && (10 == ((Object) reqMap.get("qrytmbeginupd")).toString().length())) {
+                    qryTmBeginUpd = ((Object) reqMap.get("qrytmbeginupd")).toString();
+                    qryTmBeginUpd = qryTmBeginUpd + " 00:00:00";
+                } else {
+                    qryTmBeginUpd = Const.EARLIEST_TIME;
+                    //默认最早时间1000-01-01 00:00:01
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmendupd")) && (10 == ((Object) reqMap.get("qrytmendupd")).toString().length())) {
+                    qryTmEndUpd = ((Object) reqMap.get("qrytmendupd")).toString();
+                    qryTmEndUpd = qryTmEndUpd + " 23:59:59";
+                } else {
+                    qryTmEndUpd = Const.LATE_ARRIVAL_TIME;
+                    //默认最晚时间"5000-01-01 00:00:01"
+                }
                 qureyData.put("qryTmBegin", qryTmBegin);
                 qureyData.put("qryTmEnd", qryTmEnd);
+                qureyData.put("qryTmBeginUpd", qryTmBeginUpd);
+                qureyData.put("qryTmEndUpd", qryTmEndUpd);
                 //添加分页信息进入储值域，用于传参
                 page.setPd(qureyData);
                 // 查询个人积分基本信息表
@@ -222,7 +241,15 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                         data.put("creation_tm", tempmap.get("CREATION_TM") == null ? "" : tempmap.get("CREATION_TM").toString());
                         data.put("original_score", tempmap.get("ORIGINAL_SCORE") == null ? "" : tempmap.get("ORIGINAL_SCORE").toString());
                         data.put("id", tempmap.get("ID") == null ? "" : aesEncrypt(tempmap.get("ID").toString(), Const.ALLENCRYPTCODE));
-
+                        userId = tempmap.get("ID") == null ? "" : tempmap.get("ID").toString();
+                        data = findAllOtherData(userId, logger, data);
+                        if (null == data) {
+                            map.setCode(Const.NODATA);
+                            logger.info("queryScore---returnStatus---1---");
+                            String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
+                            //拼接总页数便于用户使用
+                            return jsonReturn;
+                        }
                         contentlist.add(data);
                     }
                     map.setCode(Const.SUCCESS_CODE);
@@ -235,7 +262,7 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                     jsonReturn = jsonReturn.replaceAll("contentlist", "rows");
                     logger.info("queryScore---jsonObject.toString()---" + totalMapJson + "---");
                     logger.info("插入操作日志");
-                    insertSysOperatelog(DESUtil.aesDecrypt(userId, Const.ALLENCRYPTCODE), Const.QUERYSCORE_LOG, logger, request);
+                    insertSysOperatelog(userId, Const.QUERYSCORE_LOG, logger, request);
                     return jsonReturn;
                 } else {
                     map.setCode(Const.NODATA);
@@ -249,34 +276,49 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                 //添加分页信息
                 qureyData = getPage(qureyData, pageSize, pageNum);
                 //添加查询时间作为条件
-                String qryTm = "";
-                if (StringUtil.isEmpty(reqMap.get("qrytm")) && (8 == ((Object) reqMap.get("qrytm")).toString().length())) {
-                    qryTm = ((Object) reqMap.get("qrytm")).toString();
-                }
+
                 if (Const.SPECIAL_USERID.equals(userId)) {
                     qureyData.put("id", "");
                 } else {
                     qureyData.put("id", DESUtil.aesDecrypt(userId, Const.ALLENCRYPTCODE));
                 }
-
+                /*创建时间更新时间初始化*/
                 String qryTmBegin = "";
                 String qryTmEnd = "";
-                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (8 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
+                String qryTmBeginUpd = "";
+                String qryTmEndUpd = "";
+                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (10 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
                     qryTmBegin = ((Object) reqMap.get("qrytmbegin")).toString();
-                    qryTmBegin = qryTmBegin.substring(0, 4) + "-" + qryTmBegin.substring(4, 6) + "-" + qryTmBegin.substring(6, 8)+" 00:00:00";
-                }else{
+                    qryTmBegin = qryTmBegin + " 00:00:00";
+                } else {
                     qryTmBegin = Const.EARLIEST_TIME;
                     //默认最早时间1000-01-01 00:00:01
                 }
-                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (8 == ((Object) reqMap.get("qrytmend")).toString().length())) {
+                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (10 == ((Object) reqMap.get("qrytmend")).toString().length())) {
                     qryTmEnd = ((Object) reqMap.get("qrytmend")).toString();
-                    qryTmEnd = qryTmEnd.substring(0, 4) + "-" + qryTmEnd.substring(4, 6) + "-" + qryTmEnd.substring(6, 8)+" 23:59:59";
-                }else{
+                    qryTmEnd = qryTmEnd + " 23:59:59";
+                } else {
                     qryTmEnd = Const.LATE_ARRIVAL_TIME;
+                    //默认最晚时间"5000-01-01 00:00:01"
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmbeginupd")) && (10 == ((Object) reqMap.get("qrytmbeginupd")).toString().length())) {
+                    qryTmBeginUpd = ((Object) reqMap.get("qrytmbeginupd")).toString();
+                    qryTmBeginUpd = qryTmBeginUpd + " 00:00:00";
+                } else {
+                    qryTmBeginUpd = Const.EARLIEST_TIME;
+                    //默认最早时间1000-01-01 00:00:01
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmendupd")) && (10 == ((Object) reqMap.get("qrytmendupd")).toString().length())) {
+                    qryTmEndUpd = ((Object) reqMap.get("qrytmendupd")).toString();
+                    qryTmEndUpd = qryTmEndUpd + " 23:59:59";
+                } else {
+                    qryTmEndUpd = Const.LATE_ARRIVAL_TIME;
                     //默认最晚时间"5000-01-01 00:00:01"
                 }
                 qureyData.put("qryTmBegin", qryTmBegin);
                 qureyData.put("qryTmEnd", qryTmEnd);
+                qureyData.put("qryTmBeginUpd", qryTmBeginUpd);
+                qureyData.put("qryTmEndUpd", qryTmEndUpd);
                 //添加分页信息进入储值域，用于传参
                 page.setPd(qureyData);
                 // 查询积分日志
@@ -287,7 +329,8 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                     for (int i = 0; i < classTypeList0.size(); i++) {
                         data = new PageData();
                         HashMap tempmap = (HashMap) classTypeList0.get(i);
-                        data.put(userIdField, tempmap.get("USER_ID") == null ? "" : aesEncrypt(tempmap.get("USER_ID").toString(), Const.ALLENCRYPTCODE));
+                        userId = tempmap.get("USER_ID") == null ? "" : tempmap.get("USER_ID").toString();
+                        data.put(userIdField, aesEncrypt(userId, Const.ALLENCRYPTCODE));
                         totalMap.put("total", null == tempmap.get("total") ? "" : tempmap.get("total").toString());
                         data.put("score", tempmap.get("SCORE") == null ? "" : tempmap.get("SCORE").toString());
                         data.put("last_time_score", tempmap.get("LAST_TIME_SCORE") == null ? "" : tempmap.get("LAST_TIME_SCORE").toString());
@@ -323,7 +366,6 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                         if (null == creationDt || "" == creationDt || creationDt.length() != 8) {
                             data.put("creation_dt", "");
                         } else {
-                            creationDt = creationDt.substring(0, 4) + "-" + creationDt.substring(4, 6) + "-" + creationDt.substring(6, 8);
                             data.put("creation_dt", creationDt);
                         }
                         data.put("id", null == tempmap.get("ID") ? "" : tempmap.get("ID").toString());
@@ -350,7 +392,7 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                     jsonReturn = jsonReturn.replaceAll("contentlist", "rows");
                     logger.info("queryScore---jsonObject.toString()---" + totalMapJson + "---");
                     logger.info("插入积分查询操作日志");
-                    insertSysOperatelog(DESUtil.aesDecrypt(userId, Const.ALLENCRYPTCODE), Const.QUERYSCORE_LOG, logger, request);
+                    insertSysOperatelog(userId, Const.QUERYSCORE_LOG, logger, request);
                     return jsonReturn;
                 } else {
                     map.setCode(Const.NODATA);
@@ -363,25 +405,43 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                 String pageNum = ((Object) reqMap.get("pageNumber")).toString();
                 //添加分页信息
                 qureyData = getPage(qureyData, pageSize, pageNum);
-                //添加查询时间作为条件
+                /*创建时间更新时间初始化*/
                 String qryTmBegin = "";
                 String qryTmEnd = "";
-                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (8 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
+                String qryTmBeginUpd = "";
+                String qryTmEndUpd = "";
+                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (10 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
                     qryTmBegin = ((Object) reqMap.get("qrytmbegin")).toString();
-                    qryTmBegin = qryTmBegin.substring(0, 4) + "-" + qryTmBegin.substring(4, 6) + "-" + qryTmBegin.substring(6, 8)+" 00:00:00";
-                }else{
+                    qryTmBegin = qryTmBegin + " 00:00:00";
+                } else {
                     qryTmBegin = Const.EARLIEST_TIME;
                     //默认最早时间1000-01-01 00:00:01
                 }
-                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (8 == ((Object) reqMap.get("qrytmend")).toString().length())) {
+                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (10 == ((Object) reqMap.get("qrytmend")).toString().length())) {
                     qryTmEnd = ((Object) reqMap.get("qrytmend")).toString();
-                    qryTmEnd = qryTmEnd.substring(0, 4) + "-" + qryTmEnd.substring(4, 6) + "-" + qryTmEnd.substring(6, 8)+" 23:59:59";
-                }else{
+                    qryTmEnd = qryTmEnd + " 23:59:59";
+                } else {
                     qryTmEnd = Const.LATE_ARRIVAL_TIME;
+                    //默认最晚时间"5000-01-01 00:00:01"
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmbeginupd")) && (10 == ((Object) reqMap.get("qrytmbeginupd")).toString().length())) {
+                    qryTmBeginUpd = ((Object) reqMap.get("qrytmbeginupd")).toString();
+                    qryTmBeginUpd = qryTmBeginUpd + " 00:00:00";
+                } else {
+                    qryTmBeginUpd = Const.EARLIEST_TIME;
+                    //默认最早时间1000-01-01 00:00:01
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmendupd")) && (10 == ((Object) reqMap.get("qrytmendupd")).toString().length())) {
+                    qryTmEndUpd = ((Object) reqMap.get("qrytmendupd")).toString();
+                    qryTmEndUpd = qryTmEndUpd + " 23:59:59";
+                } else {
+                    qryTmEndUpd = Const.LATE_ARRIVAL_TIME;
                     //默认最晚时间"5000-01-01 00:00:01"
                 }
                 qureyData.put("qryTmBegin", qryTmBegin);
                 qureyData.put("qryTmEnd", qryTmEnd);
+                qureyData.put("qryTmBeginUpd", qryTmBeginUpd);
+                qureyData.put("qryTmEndUpd", qryTmEndUpd);
                 if (!Const.SPECIAL_USERID.equals(userId)) {
                     qureyData.put("userId", DESUtil.aesDecrypt(userId, Const.ALLENCRYPTCODE));
                 }
@@ -434,24 +494,43 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                 //添加分页信息
                 qureyData = getPage(qureyData, pageSize, pageNum);
                 //添加查询时间作为条件
+                /*创建时间更新时间初始化*/
                 String qryTmBegin = "";
                 String qryTmEnd = "";
-                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (8 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
+                String qryTmBeginUpd = "";
+                String qryTmEndUpd = "";
+                if (StringUtil.isEmpty(reqMap.get("qrytmbegin")) && (10 == ((Object) reqMap.get("qrytmbegin")).toString().length())) {
                     qryTmBegin = ((Object) reqMap.get("qrytmbegin")).toString();
-                    qryTmBegin = qryTmBegin.substring(0, 4) + "-" + qryTmBegin.substring(4, 6) + "-" + qryTmBegin.substring(6, 8)+" 00:00:00";
-                }else{
+                    qryTmBegin = qryTmBegin + " 00:00:00";
+                } else {
                     qryTmBegin = Const.EARLIEST_TIME;
                     //默认最早时间1000-01-01 00:00:01
                 }
-                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (8 == ((Object) reqMap.get("qrytmend")).toString().length())) {
+                if (StringUtil.isEmpty(reqMap.get("qrytmend")) && (10 == ((Object) reqMap.get("qrytmend")).toString().length())) {
                     qryTmEnd = ((Object) reqMap.get("qrytmend")).toString();
-                    qryTmEnd = qryTmEnd.substring(0, 4) + "-" + qryTmEnd.substring(4, 6) + "-" + qryTmEnd.substring(6, 8)+" 23:59:59";
-                }else{
+                    qryTmEnd = qryTmEnd + " 23:59:59";
+                } else {
                     qryTmEnd = Const.LATE_ARRIVAL_TIME;
+                    //默认最晚时间"5000-01-01 00:00:01"
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmbeginupd")) && (10 == ((Object) reqMap.get("qrytmbeginupd")).toString().length())) {
+                    qryTmBeginUpd = ((Object) reqMap.get("qrytmbeginupd")).toString();
+                    qryTmBeginUpd = qryTmBeginUpd + " 00:00:00";
+                } else {
+                    qryTmBeginUpd = Const.EARLIEST_TIME;
+                    //默认最早时间1000-01-01 00:00:01
+                }
+                if (StringUtil.isEmpty(reqMap.get("qrytmendupd")) && (10 == ((Object) reqMap.get("qrytmendupd")).toString().length())) {
+                    qryTmEndUpd = ((Object) reqMap.get("qrytmendupd")).toString();
+                    qryTmEndUpd = qryTmEndUpd + " 23:59:59";
+                } else {
+                    qryTmEndUpd = Const.LATE_ARRIVAL_TIME;
                     //默认最晚时间"5000-01-01 00:00:01"
                 }
                 qureyData.put("qryTmBegin", qryTmBegin);
                 qureyData.put("qryTmEnd", qryTmEnd);
+                qureyData.put("qryTmBeginUpd", qryTmBeginUpd);
+                qureyData.put("qryTmEndUpd", qryTmEndUpd);
                 if (Const.SPECIAL_USERID.equals(userId)) {
                     qureyData.put("userId", "");
                 } else {
@@ -475,7 +554,7 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                 } else if (decryptBasedDes(perQryType).equals(Const.QUERYSCORE_TASK)) {
                     // 表示个人作业积分列表 70000
                     classTypeList0 = (List<PageData>) dao.findForList("PerTaskIntegrationMapper.selectByexamplePage", page);
-                }else if (decryptBasedDes(perQryType).equals(Const.QUERYSCORE_DAYEND)) {
+                } else if (decryptBasedDes(perQryType).equals(Const.QUERYSCORE_DAYEND)) {
                     // 表示日终跑批信息列表 80000
                     classTypeList0 = (List<PageData>) dao.findForList("PerDayendRunbatchMapper.selectByexamplePage", page);
                 }
@@ -489,10 +568,10 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
                         data.put("exchange_score", tempmap.get("EXCHANGE_SCORE") == null ? "" : tempmap.get("EXCHANGE_SCORE").toString());
                         data.put("if_graduation", tempmap.get("IF_GRADUATION") == null ? "" : tempmap.get("IF_GRADUATION").toString());
                         data.put("if_score", tempmap.get("IF_SCORE") == null ? "" : tempmap.get("IF_SCORE").toString());
-                        if(tempmap.get("BATCH_TYPE") == null||tempmap.get("BATCH_TYPE") == ""){
-                            data.put("batch_type","");
-                        }else if(Const.AUTO_UPDSCORE.equals(tempmap.get("BATCH_TYPE").toString())){
-                            data.put("batch_type",Const.DEFAULT_AUTO_UPDSCORE);
+                        if (tempmap.get("BATCH_TYPE") == null || tempmap.get("BATCH_TYPE") == "") {
+                            data.put("batch_type", "");
+                        } else if (Const.AUTO_UPDSCORE.equals(tempmap.get("BATCH_TYPE").toString())) {
+                            data.put("batch_type", Const.DEFAULT_AUTO_UPDSCORE);
                         }
                         data.put(userIdField, tempmap.get("USER_ID") == null ? "" : aesEncrypt(tempmap.get("USER_ID").toString(), Const.ALLENCRYPTCODE));
                         data.put("score", tempmap.get("SCORE") == null ? "" : tempmap.get("SCORE").toString());
@@ -525,7 +604,7 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
         }
         // 统一输出返回结果
         HashMap totalMap = new HashMap();
-        if(!Const.SUCCESS_CODE.equals(map.getCode())){
+        if (!Const.SUCCESS_CODE.equals(map.getCode())) {
             totalMap.put("total", "0");
         }
         String jsonReturn = JSON.toJSONString(map, SerializerFeature.DisableCircularReferenceDetect);
@@ -625,5 +704,129 @@ public class IntegrationQryServiceImpl implements IntegrationQryService {
         }
         return ip;
     }
+
+
+    public PageData findAllOtherData(String userId, Logger logger, PageData data) {
+        //当前方法用来查询该用户的各类积分汇总信息
+        logger.info("查询该用户的各类积分汇总信息");
+        PageData qureyData = new PageData();
+        //添加分页信息进入储值域，用于传参
+        Page page = new Page();
+        qureyData.put("userId", userId);
+        qureyData.put("qryTmBegin", Const.EARLIEST_TIME);
+        qureyData.put("qryTmEnd", Const.LATE_ARRIVAL_TIME);
+        logger.info("查询该用户登陆积分汇总");
+        qureyData.put("scoreType", Const.LOGIN_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("loginscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+        logger.info("查询该用户课程学习积分汇总");
+        qureyData.put("scoreType", Const.LEARN_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("learnscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户课程评论获得积分汇总");
+        qureyData.put("scoreType", Const.COMMENT_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("commentscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户课程恶意评论损失积分汇总");
+        qureyData.put("scoreType", Const.HOSTILITY_COMMENT_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("hostilitycommentscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户问卷调查获得积分汇总");
+        qureyData.put("scoreType", Const.INVESTIGATION_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("questionnairescore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户作业精华获得积分汇总");
+        qureyData.put("scoreType", Const.TASK_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("taskscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户问题点赞获得积分汇总");
+        qureyData.put("scoreType", Const.APPRECIATE_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("questionscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户兑换积分损失积分汇总");
+        qureyData.put("scoreType", Const.EXCHANGE_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("exchangescore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户培训班结业获取积分汇总");
+        qureyData.put("scoreType", Const.TRAINING_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("trainscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+
+        logger.info("查询该用户日终跑批损失积分汇总");
+        qureyData.put("scoreType", Const.AUTO_UPDSCORE);
+        page.setPd(qureyData);
+        if (null != findByScoreType(page, logger)) {
+            data.put("dailytaskscore", findByScoreType(page, logger));
+        } else {
+            return null;
+        }
+        return data;
+    }
+
+    /*单独的查询个人日志信息表的各个子类别的公共方法[主要目的是对各个类别的积分进行汇总计算，然后返回]*/
+    public Integer findByScoreType(Page page, Logger logger) {
+        List<PageData> classTypeList = null;
+        int score = 0;
+        String newScore = "";
+        try {
+            classTypeList = (List<PageData>) dao.findForList("PerIntegrationLogMapper.selectScoreType", page);
+            if (classTypeList != null && classTypeList.size() != 0) {
+                HashMap totalMap = new HashMap();
+                int classTypeListSize = classTypeList.size();
+                for (int i = 0; i < classTypeListSize; i++) {
+                    HashMap tempmap = (HashMap) classTypeList.get(i);
+                    newScore = tempmap.get("SCORE") == null ? "0" : tempmap.get("SCORE").toString();
+                    score = score + Integer.valueOf(newScore);
+                }
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return score;
+    }
+
 
 }
